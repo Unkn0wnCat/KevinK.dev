@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Seite{% endblock %} | KevinK.dev</title>
+    <link name="kevin-main" rel="stylesheet" href="{{ asset('assets/styles/kevinMain.css') }}">
+    <!-- ToDo: Lokale Google Fonts -->
+    <link name="google-fonts" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Roboto" rel="stylesheet">
+    <link rel="stylesheet" name="nprogress" href="{{ asset('assets/styles/nprogress/nprogress.css') }}">
+    <!-- ToDo: Lokales Fontawesome -->
+    <link name="fontawesome" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<div class="topBar">
+    <nav class="topBarInner">
+        <a id="navBtnHome" href="{{ path('index') }}" class="logo{% if module|default("") == "home" %} active{% endif %} spf-link">KevinK.dev</a>
+        <div class="flexSpacer"></div>
+        {#<a id="navBtnProjects" href="{{ path('projects') }}" {% if module|default("") == "projects" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>Projekte</a>
+        <a id="navBtnPhotos" href="{{ path('photos') }}" {% if module|default("") == "photos" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>Fotos</a>
+        <a id="navBtnBlog" href="{{ path('blog') }}" {% if module|default("") == "blog" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>Blog</a>#}
+    </nav>
+</div>
+<div id="content">
+    {% block content %}
+        <section>
+            <article>
+                {% block body %}{% endblock %}
+            </article>
+        </section>
+    {% endblock %}
+</div>
+
+<footer>CC-BY 4.0 Kevin Kandlbinder, <a href="{{ path('impressum') }}" class="spf-link">Impressum</a> | <a href="{{ path('datenschutz') }}" class="spf-link">Datenschutz</a><span class="adminFooter">{# | <a href="{{ path('admin') }}" class="spf-link">Admin</a>#}</span></footer>
+
+<script name="jquery" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script name="kevin-main" src="{{ asset('assets/scripts/kevinMain.js') }}"></script>
+<script name="nprogress" src="{{ asset('assets/scripts/nprogress/nprogress.js') }}"></script>
+<script name="spfjs" src="{{ asset('assets/scripts/spfjs/spf-debug.js') }}"></script>
+
+
+
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>

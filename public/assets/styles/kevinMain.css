@@ -1,0 +1,279 @@
+:root {
+    --body-width: 900px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+.topBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    background: #000710;
+    z-index: 999;
+}
+
+.topBarInner {
+    display: flex;
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+}
+
+.topBar a {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    /*text-decoration: underline dotted white;*/
+    text-decoration: none;
+    border-top: 2px solid transparent;
+}
+
+.topBar a.active {
+    border-color: white;
+}
+
+.flexSpacer {
+    flex-grow: 1;
+}
+
+.heroSection {
+    width: 100%;
+    background: #000710;
+    min-height: 500px;
+    padding-top: 100px;
+}
+
+.profile {
+    position: relative;
+    left: 50%;
+    width: calc(90% - 40px);
+    max-width: 600px;
+    max-height: 400px;
+    transform: translate(-50%, 0%);
+}
+
+.profileCard {
+    width: calc(100% - 40px);
+    height: calc(100% - 20px);
+    background: white;
+    transform: translate(40px, 20px);
+    border-radius: 5px;
+    -webkit-box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
+    box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
+    padding: 20px 20px 20px 230px;
+}
+
+.profileImage {
+    display: inline-block;
+    width: 250px;
+    height: 350px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 100;
+    background-color: #1c1c1c;
+    background-size: cover;
+    background-position: center;
+}
+
+.profile .hello {
+    font-weight: 100;
+    opacity: .5;
+    display: block;
+    margin-bottom: -5px;
+}
+
+.profile .name {
+    font-weight: 100;
+    font-size: 2em;
+    display: block;
+}
+
+.profile .description {
+    font-weight: 100;
+    display: block;
+}
+
+.contactLinks {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contactLink {
+    color: black;
+    transition: text-decoration .5s;
+    text-decoration: underline dotted rgba(0, 0, 0, 0);
+    padding-left: 25px;
+    margin: 3px 0;
+}
+
+.contactLink:hover, .contactLink:active {
+    text-decoration: underline dotted rgba(0, 0, 0, .5);
+}
+
+.contactLink > i {
+    color: #4257ec;
+    margin-left: -25px;
+    margin-right: 5px;
+}
+
+section > div:not(.profile), section > article {
+    max-width: var(--body-width);
+    width: 100%;
+    padding: 40px 20px;
+    margin: 0 auto;
+}
+
+article p {
+    text-align: justify;
+}
+
+article h1, section > div > h1 {
+    font-size: 2em;
+}
+
+
+.recentsSection {
+    background: #060606;
+    color: white;
+}
+
+.postList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.postCard {
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 5px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: calc(100% / 4);
+    -webkit-box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
+    box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
+}
+
+.postCardImage {
+    display: block;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+}
+
+.postCardMeta {
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.postCardTitle {
+    display: block;
+    font-size: 1.2em;
+}
+
+.postCardCTA {
+    display: block;
+}
+
+.postCardCTA a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    background: #4257ec;
+    color: white;
+    text-decoration: none;
+}
+
+
+.contactSection {
+    background-size: cover;
+    background: #000710 url("../images/natalya-letunova-469748-unsplash.jpg") center;
+    color: white;
+}
+
+form input[type=text], form input[type=password], form input[type=email], form textarea {
+    display: block;
+    background: transparent;
+    border:thin solid black;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    color: black;
+    margin: 20px 0;
+}
+
+form label {
+    display: block;
+    margin-top: 5px;
+}
+
+form button {
+    width:100%;
+    border: thin solid #4257ec;
+    font: inherit;
+    color: black;
+    background: transparent;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    transition: background .25s;
+}
+
+form button:hover {
+    background: #4257ec;
+    color: white;
+}
+
+.contactSection input[type=text], .contactSection input[type=email], .contactSection textarea, .contactSection button {
+    color: white;
+    border-color: white;
+    background: rgba(0, 0, 0, .25);
+}
+
+.contactSection input, .contactSection textarea {
+    border:thin solid white;
+    margin: 0;
+}
+
+
+footer {
+    background: #000710;
+    width: 100%;
+    color: white;
+    padding: 5px;
+    text-align: center;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline dotted currentColor;
+}
+
+
+.adminFooter {
+    opacity: .25;
+}
+
+#content {
+    min-height: calc(100vh - 29px);
+}

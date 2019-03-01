@@ -1,0 +1,22 @@
+{
+    "title": "{% filter e("js") %}{% block title %}Seite{% endblock %} | KevinK.dev{% endfilter %}",
+    "head": "{% filter e("js") %}{% block stylesheets %}{% endblock %}{% endfilter %}",
+    "foot": "{% filter e("js") %}{% block javascripts %}{% endblock %}{% endfilter %}",
+    "body": {
+        "content": "{% filter e("js") %}{% block content %}<section><article>{% block body %}{% endblock %}</article></section>{% endblock %}{% endfilter %}"
+    },
+    "attr": {
+        "navBtnHome": {
+            "class": "logo{% if module|default("") == "home" %} active{% endif %} spf-link"
+        },
+        "navBtnProjects": {
+            "class": "{% if module|default("") == "projects" %}active spf-link{% else %}spf-link{% endif %}"
+        },
+        "navBtnPhotos": {
+            "class": "{% if module|default("") == "photos" %}active spf-link{% else %}spf-link{% endif %}"
+        },
+        "navBtnBlog": {
+            "class": "{% if module|default("") == "blog" %}active spf-link{% else %}spf-link{% endif %}"
+        }
+    }
+}

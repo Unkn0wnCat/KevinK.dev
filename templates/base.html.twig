@@ -1,0 +1,6 @@
+{% if(app.request.query.get('spf')) %}
+    {% set template = "spf_base.json.twig" %}
+{% else %}
+    {% set template = "html_base.html.twig" %}
+{% endif %}
+{% extends(template) %}
