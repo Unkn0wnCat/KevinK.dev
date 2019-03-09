@@ -17,11 +17,11 @@
 <div class="topBar">
     <nav class="topBarInner">
         <a id="navBtnHome" href="{{ path('index') }}" class="logo{% if module|default("") == "home" %} active{% endif %} spf-link">KevinK.dev</a>
-        <div class="flexSpacer"></div>
+        {#<div class="flexSpacer"></div>
         <a id="navBtnProjects" href="{{ path('projects') }}" {% if module|default("") == "projects" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>Projekte</a>
         <a id="navBtnPhotos" href="{{ path('photos') }}" {% if module|default("") == "photos" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>Fotos</a>
         <a id="navBtnBlog" href="{{ path('blog') }}" {% if module|default("") == "blog" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>Blog</a>
-    </nav>
+    #}</nav>
 </div>
 <div id="content">
     {% block content %}

@@ -277,3 +277,16 @@ footer a {
 #content {
     min-height: calc(100vh - 29px);
 }
+
+@media (max-width: 590px) {
+    .profileImage {
+        display: none;
+    }
+
+    .profileCard {
+        padding: 20px 20px 20px 20px;
+        transform: translate(20px, 20px);
+    }
+
+
+}
