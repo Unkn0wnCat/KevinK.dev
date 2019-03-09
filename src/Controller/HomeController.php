@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -34,6 +36,27 @@ class HomeController extends AbstractController
     {
         return $this->render('home/datasec.html.twig', [
 
+        ]);
+    }
+
+    /**
+     * @Route("/sitemap.xml")
+     * @param Request $request
+     * @return Response
+     */
+    public function sitemap(Request $request) {
+        $urls = [];
+        $hostname = $request->getHost();
+
+        $urls[] = ['loc' => $this->get("router")->generate("index"), 'changefreq' => 'weekly', 'priority' => '1.0'];
+
+        $response = new Response();
+
+        $response->headers->set('Content-Type', 'xml');
+
+        return $this->render('sitemap.xml.twig', [
+            'urls' => $urls,
+            'hostname' => $hostname
         ]);
     }
 }
