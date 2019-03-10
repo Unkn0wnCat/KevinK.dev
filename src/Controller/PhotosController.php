@@ -12,16 +12,16 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PhotosController extends AbstractController
 {
-    /**
+    /*/**
      * @Route("/", name="photos")
      */
-    public function index()
+    /*public function index()
     {
         return $this->render('photos/index.html.twig', [
             'controller_name' => 'PhotosController',
             'module' => 'photos',
         ]);
-    }
+    }*/
 
     // TODO: Alles.
 }
