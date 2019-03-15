@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ERROR 404{% endblock %}
+
+{% block body %}
+    <h1>Diese Seite konnte nicht gefunden werden.</h1>
+
+    <p>
+        Die angefragte Seite konnte nicht geladen werden. Bitte überprüfe die URL auf Schreibfehler oder <a href="{{ path("index") }}">kehre zur Startseite zurück</a>.
+    </p>
+{% endblock %}
