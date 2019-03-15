@@ -36,7 +36,7 @@
 
 </script>
 
-    <meta name="description" content="Hallo, ich bin Kevin Kandlbinder, ein Entwickler und Hobby-Fotograf aus Norddeutschland." />
+    <meta name="description" content="{% trans from "homepage" %}Hallo, ich bin Kevin Kandlbinder, ein Entwickler und Hobby-Fotograf aus Norddeutschland.{% endtrans %}" />
     <meta name="keywords" content="Kevin Kandlbinder, Kevin, Kandlbinder, Web, Web Developer, Developer, JavaScript, PHP, Java, Photos, Fotos" />
 
 
@@ -48,22 +48,22 @@
         <div class="profile">
             <div style="background-image: url('{{ asset('assets/images/Kevin-Kandlbinder_p02.jpg') }}');" class="profileImage"></div>
             <div class="profileCard">
-                <span class="hello">Hallo, ich bin</span>
+                <span class="hello">{% trans from "homepage" %}Hallo, ich bin{% endtrans %}</span>
                 <span class="name">Kevin Kandlbinder</span>
-                <span class="description">Ich bin <span id="descriptionType">Web Developer</span>.</span>
+                <span class="description">{% trans from "homepage" %}Ich bin{% endtrans %} <span id="descriptionType">{% trans from "homepage" %}Web Developer{% endtrans %}</span>.</span>
 
                 <div class="contactLinks">
                     <a class="contactLink" href="tel:+4941068068004"><i class="fas fa-fw fa-phone"></i>+49 4106 8068004</a>
                     <a class="contactLink" href="mailto:kevin@kevink.dev?subject=%5Bkevink.dev%5D%20"><i class="far fa-fw fa-envelope"></i>kevin@kevink.dev</a>
-                    <a class="contactLink" href="https://goo.gl/maps/KVq9z1PVaVP2" target="_blank"><i class="fas fa-fw fa-map-marker-alt"></i>Quickborn, Schleswig-Holstein, Deutschland</a>
+                    <a class="contactLink" href="https://goo.gl/maps/KVq9z1PVaVP2" target="_blank"><i class="fas fa-fw fa-map-marker-alt"></i>{% trans from "homepage" %}Quickborn, Schleswig-Holstein, Deutschland{% endtrans %}</a>
                 </div>
             </div>
         </div>
     </section>
     <section class="aboutSection">
         <article>
-            <h1>Über mich</h1>
-            <p>Hallo!<br>Ich bin Kevin Kandlbinder, ein Entwickler und Hobby-Fotograf aus Norddeutschland. Ich habe schon früh in meinem Leben gelernt mit Computern umzugehen, da mein Vater mir seinen alten Windows 2000-Tower überließ, als er sich einen neuen holte. Kontakt zur Entwicklung von Webseiten hatte ich einige Jahre darauf zum ersten Mal, als ich mir ein Buch zu HTML, CSS und PHP gekauft habe. Seitdem ist Web Development für mich gleichermaßen ein Hobby und ein Job.</p>
+            <h1>{% trans from "homepage" %}Über mich{% endtrans %}</h1>
+            <p>{% trans from "homepage" %}Hallo!{% endtrans %}<br>{% trans from "homepage" %}Ich bin Kevin Kandlbinder, ein Entwickler und Hobby-Fotograf aus Norddeutschland. Ich habe schon früh in meinem Leben gelernt mit Computern umzugehen, da mein Vater mir seinen alten Windows 2000-Tower überließ, als er sich einen neuen holte. Kontakt zur Entwicklung von Webseiten hatte ich einige Jahre darauf zum ersten Mal, als ich mir ein Buch zu HTML, CSS und PHP gekauft habe. Seitdem ist Web Development für mich gleichermaßen ein Hobby und ein Job.{% endtrans %}</p>
         </article>
     </section>
     {#<section class="recentsSection">

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans from "modules" %}Language{% endtrans %}{% endblock %}
+
+{% block body %}
+    <h1>Choose your Language. Current: {{ app.request.locale }}</h1>
+    <ul>
+        <li><a href="{{ path('setLang',{'language': "en" }) }}">English (en)</a></li>
+        <li><a href="{{ path('setLang',{'language': "de" }) }}">Deutsch (de)</a></li>
+    </ul>
+{% endblock %}

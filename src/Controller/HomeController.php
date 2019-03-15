@@ -59,4 +59,27 @@ class HomeController extends AbstractController
             'hostname' => $hostname
         ]);
     }
+
+    /**
+     * @Route("/setlanguage/{language}", name="setLang")
+     * @param Request $request
+     * @param String $language
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function switchLang(Request $request, String $language) {
+        $this->get('session')->set('_locale', $language);
+        $request->setLocale($language);
+        $redirect = $this->get("router")->generate("index");
+        if($request->headers->get('referer')) $redirect = $request->headers->get('referer');
+        return $this->redirect($redirect);
+    }
+
+    /**
+     * @Route("/setlanguage", name="chooseLang")
+     * @param Request $request
+     * @return Response
+     */
+    public function switchLangChooser(Request $request) {
+        return $this->render('home/chooser.html.twig');
+    }
 }
