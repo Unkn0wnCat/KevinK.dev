@@ -1,0 +1,11 @@
+blogHomeText: Welcome to my blog, the place where I will dump my thoughts and experiences in an hopefolly entertaining way.
+noPosts: Kein Inhalt verfügbar...
+read more: Read more
+"page %page%/%pageCount%": Page %page% of %page%
+"by %author% on %publishdate% in %categorylink%": by %author% on %publishdate% in %categorylink%
+category: Category
+
+chooseCategory: Choose Category
+
+general: General
+generalDescription: General Posts about random things.

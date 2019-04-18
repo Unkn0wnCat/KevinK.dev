@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+    <section class="blogSection">
+        <article>
+            <h1>{% trans from "blog" %}category{% endtrans %}: {{ category.languageKey|trans({}, "blog") }}</h1>
+            <h2>{{ "page %page%/%pageCount%"|trans({'%page%': page, '%pageCount%': pageCount}, "blog") }}</h2>
+            {{ category.descriptionLanguageKey|trans({}, "blog") }}
+
+            {% include 'blog/postList.html.twig' with { "posts": posts } %}
+
+            <div class="pageButtons">
+                {% if page - 1 > 0 %}<a href="{{ path("blogCategoryPage", {"urlName": category.urlName,"page": (page - 1)}) }}">&lt;</a>{% endif %}
+                <div class="flexSpacer">{{ "page %page%/%pageCount%"|trans({'%page%': page, '%pageCount%': pageCount}, "blog") }}</div>
+                {% if page + 1 < pageCount %}<a href="{{ path("blogCategoryPage", {"urlName": category.urlName, "page": (page + 1)}) }}">&gt;</a>{% endif %}
+            </div>
+        </article>
+    </section>
+{% endblock %}

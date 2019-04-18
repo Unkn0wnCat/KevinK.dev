@@ -36,7 +36,7 @@
 
 </script>
 
-    <meta name="description" content="{% trans from "homepage" %}Hallo, ich bin Kevin Kandlbinder, ein Entwickler und Hobby-Fotograf aus Norddeutschland.{% endtrans %}" />
+    <meta name="description" content="{% trans from "homepage" %}helloDescription{% endtrans %}" />
     <meta name="keywords" content="Kevin Kandlbinder, Kevin, Kandlbinder, Web, Web Developer, Developer, JavaScript, PHP, Java, Photos, Fotos" />
 
 
@@ -48,35 +48,35 @@
         <div class="profile">
             <div style="background-image: url('{{ asset('assets/images/Kevin-Kandlbinder_p02.jpg') }}');" class="profileImage"></div>
             <div class="profileCard">
-                <span class="hello">{% trans from "homepage" %}Hallo, ich bin{% endtrans %}</span>
+                <span class="hello">{% trans from "homepage" %}hello{% endtrans %}</span>
                 <span class="name">Kevin Kandlbinder</span>
-                <span class="description">{% trans from "homepage" %}Ich bin{% endtrans %} <span id="descriptionType">{% trans from "homepage" %}Web Developer{% endtrans %}</span>.</span>
+                <span class="description">{% trans from "homepage" %}me{% endtrans %} <span id="descriptionType">{% trans from "homepage" %}webDeveloper{% endtrans %}</span>.</span>
 
                 <div class="contactLinks">
                     <a class="contactLink" href="tel:+4941068068004"><i class="fas fa-fw fa-phone"></i>+49 4106 8068004</a>
                     <a class="contactLink" href="mailto:kevin@kevink.dev?subject=%5Bkevink.dev%5D%20"><i class="far fa-fw fa-envelope"></i>kevin@kevink.dev</a>
-                    <a class="contactLink" href="https://goo.gl/maps/KVq9z1PVaVP2" target="_blank"><i class="fas fa-fw fa-map-marker-alt"></i>{% trans from "homepage" %}Quickborn, Schleswig-Holstein, Deutschland{% endtrans %}</a>
+                    <a class="contactLink" href="https://goo.gl/maps/KVq9z1PVaVP2" target="_blank"><i class="fas fa-fw fa-map-marker-alt"></i>{% trans from "homepage" %}myLocation{% endtrans %}</a>
                 </div>
             </div>
         </div>
     </section>
     <section class="aboutSection">
         <article>
-            <h1>{% trans from "homepage" %}Über mich{% endtrans %}</h1>
-            <p>{% trans from "homepage" %}Hallo!{% endtrans %}<br>{% trans from "homepage" %}Ich bin Kevin Kandlbinder, ein Entwickler und Hobby-Fotograf aus Norddeutschland. Ich habe schon früh in meinem Leben gelernt mit Computern umzugehen, da mein Vater mir seinen alten Windows 2000-Tower überließ, als er sich einen neuen holte. Kontakt zur Entwicklung von Webseiten hatte ich einige Jahre darauf zum ersten Mal, als ich mir ein Buch zu HTML, CSS und PHP gekauft habe. Seitdem ist Web Development für mich gleichermaßen ein Hobby und ein Job.{% endtrans %}</p>
+            <h1>{% trans from "homepage" %}aboutMe{% endtrans %}</h1>
+            <p>{% trans from "homepage" %}aboutMeHello{% endtrans %}<br>{% trans from "homepage" %}aboutText{% endtrans %}</p>
         </article>
     </section>
-    {#<section class="recentsSection">
+    <section class="recentsSection">
         <div>
             <h1>Neueste Posts</h1>
             <div class="postList">
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
+                {% for post in posts %}
+                    {% include 'postcard.html.twig' with { "postTitle": post.title, "teaserText": post.summary, "link": path("blogView", {"year": post.publishTime|date("Y"), "month": post.publishTime|date("m"), "day": post.publishTime|date("d"), "post_id": post.id, "canonical": post.canonicalName}), "postImage": post.image } %}
+                {% endfor %}
             </div>
         </div>
     </section>
-    <section class="contactSection">
+    {#<section class="contactSection">
         <div class="contactBackground"></div>
         <div>
             <h1>Kontaktiere mich!</h1>

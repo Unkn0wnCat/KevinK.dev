@@ -5,22 +5,19 @@
 {% block content %}
     <section class="blogSection">
         <article>
-            <h1>Blog</h1>
-            <div class="postList">
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
-                {% include 'postcard.html.twig' with { "postTitle": "Title", "teaserText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.", "link": "#" } %}
+            <h1>{% trans from "modules" %}blog{% endtrans %}</h1>
+            {% if not isHome %}
+                <h2>{{ "page %page%/%pageCount%"|trans({'%page%': page, '%pageCount%': pageCount}, "blog") }}</h2>
+            {% else %}
+                {% trans from "blog" %}blogHomeText{% endtrans %}
+            {% endif %}
 
+            {% include 'blog/postList.html.twig' with { "posts": posts } %}
+
+            <div class="pageButtons">
+                {% if page - 1 > 0 %}<a href="{{ path("blogPage", {"page": (page - 1)}) }}">&lt;</a>{% endif %}
+                <div class="flexSpacer">{{ "page %page%/%pageCount%"|trans({'%page%': page, '%pageCount%': pageCount}, "blog") }}</div>
+                {% if page + 1 < pageCount %}<a href="{{ path("blogPage", {"page": (page + 1)}) }}">&gt;</a>{% endif %}
             </div>
         </article>
     </section>

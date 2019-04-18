@@ -1,5 +1,6 @@
 $(function() {
     spf.init();
+    hljs.initHighlighting();
 
 
     $(document).on("spfclick", function() {
@@ -16,5 +17,18 @@ $(function() {
 
     $(document).on("spfdone", function() {
         NProgress.remove();
+        hljs.initHighlighting.called = false;
+        hljs.initHighlighting();
+    });
+
+
+    var firstClick = true;
+    $(".has-dropdown > a").click(function(ev) {
+        if(firstClick) {
+            ev.preventDefault();
+            firstClick = false;
+        } else {
+            firstClick = true;
+        }
     });
 });

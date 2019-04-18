@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Repository\BlogCategoryRepository;
+use App\Repository\BlogPostRepository;
+use App\Utils\Localize;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -9,13 +12,31 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+    private $localize;
+
+    public function __construct()
+    {
+        $this->localize = new Localize();
+    }
+
+
     /**
      * @Route("/", name="index")
+     * @param BlogPostRepository $blogPostRepository
+     * @param Request $request
+     * @return Response
      */
-    public function index()
+    public function index(BlogPostRepository $blogPostRepository, Request $request)
     {
+        $postList = $blogPostRepository->findVisiblePosts(3,0);
+
+        foreach ($postList as $key => $post) {
+            $postList[$key] = $this->localize->getLocalizedContent($post, $request->getLocale());
+        }
+
         return $this->render('home/index.html.twig', [
             "module" => "home",
+            "posts" => $postList,
         ]);
     }
 
@@ -40,11 +61,21 @@ class HomeController extends AbstractController
     }
 
     /**
+     * @Route("/legal/disclaimer", name="disclaimer")
+     */
+    public function disclaimer()
+    {
+        return $this->render('home/disclaimer.html.twig', [
+
+        ]);
+    }
+
+    /**
      * @Route("/sitemap.xml")
      * @param Request $request
      * @return Response
      */
-    public function sitemap(Request $request) {
+    public function siteMap(Request $request) {
         $urls = [];
         $hostname = $request->getHost();
 

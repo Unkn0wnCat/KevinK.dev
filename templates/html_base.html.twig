@@ -29,15 +29,14 @@
                 "position": "bottom-right",
                 "type": "opt-out",
                 "content": {
-                    "message": "{% trans from "trackcon" %}Hi, Ich würde gerne Analyse-Software nutzen um meine Seite zu optimieren!{% endtrans %}",
-                    "allow": "{% trans from "trackcon" %}Erlauben{% endtrans %}",
-                    "dismiss": "{% trans from "trackcon" %}Ausblenden{% endtrans %}",
-                    "deny": "{% trans from "trackcon" %}Ablehnen{% endtrans %}",
-                    "link": "{% trans from "modules" %}Datenschutz{% endtrans %}",
+                    "message": "{% trans from "trackcon" %}consentText{% endtrans %}",
+                    "allow": "{% trans from "trackcon" %}allow{% endtrans %}",
+                    "dismiss": "{% trans from "trackcon" %}hide{% endtrans %}",
+                    "deny": "{% trans from "trackcon" %}deny{% endtrans %}",
+                    "link": "{% trans from "modules" %}datasec{% endtrans %}",
                     "href": '{{ path('datenschutz') }}'
                 },
-                "law.regionalLaw": true,
-                "law.countryCode": "de",
+                "revokable": false,
                 onInitialise: function (status) {
                     var type = this.options.type;
                     var didConsent = this.hasConsented();
@@ -97,11 +96,17 @@
 <div class="topBar">
     <nav class="topBarInner">
         <a id="navBtnHome" href="{{ path('index') }}" class="logo{% if module|default("") == "home" %} active{% endif %} spf-link">KevinK.dev</a>
-        {#<div class="flexSpacer"></div>
-        <a id="navBtnProjects" href="{{ path('projects') }}" {% if module|default("") == "projects" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}Projekte{% endtrans %}</a>
-        <a id="navBtnPhotos" href="{{ path('photos') }}" {% if module|default("") == "photos" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}Fotos{% endtrans %}</a>
-        <a id="navBtnBlog" href="{{ path('blog') }}" {% if module|default("") == "blog" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}Blog{% endtrans %}</a>
-    #}</nav>
+        <div class="flexSpacer"></div>
+        {#<a id="navBtnProjects" href="{{ path('projects') }}" {% if module|default("") == "projects" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}projects{% endtrans %}</a>
+        <a id="navBtnPhotos" href="{{ path('photos') }}" {% if module|default("") == "photos" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}photos{% endtrans %}</a>#}
+        <div class="has-dropdown">
+            <a id="navBtnBlog" href="{{ path('blogHome') }}" {% if module|default("") == "blog" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}blog{% endtrans %}</a>
+            <div class="dropdown">
+                <a href="{{ path("blogHome") }}">Home</a>
+                <a href="{{ path("blogCategory", {"urlName": "general"}) }}">{{ "general"|trans({}, "blog") }}</a>
+            </div>
+        </div>
+    </nav>
 </div>
 <div id="content">
     {% block content %}
@@ -113,14 +118,24 @@
     {% endblock %}
 </div>
 
-<footer>CC-BY 4.0 Kevin Kandlbinder, <a href="{{ path('impressum') }}" class="spf-link">{% trans from "modules" %}Impressum{% endtrans %}</a> | <a href="{{ path('datenschutz') }}" class="spf-link">{% trans from "modules" %}Datenschutz{% endtrans %}</a> | <a href="{{ path('chooseLang') }}" class="spf-link">Language</a><span class="adminFooter">{# | <a href="{{ path('admin') }}" class="spf-link">Admin</a>#}</span></footer>
+<footer>CC-BY 4.0 Kevin Kandlbinder, <a href="{{ path('impressum') }}" class="spf-link">{% trans from "modules" %}imprint{% endtrans %}</a> | <a href="{{ path('datenschutz') }}" class="spf-link">{% trans from "modules" %}datasec{% endtrans %}</a> | <a href="{{ path('disclaimer') }}" class="spf-link">{% trans from "modules" %}disclaimer{% endtrans %}</a> | <a href="#languageChooser">Language</a><span class="adminFooter">{# | <a href="{{ path('admin') }}" class="spf-link">Admin</a>#}</span></footer>
 
 <script name="jquery" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script name="kevin-main" src="{{ asset('assets/scripts/kevinMain.js') }}"></script>
 <script name="nprogress" src="{{ asset('assets/scripts/nprogress/nprogress.js') }}"></script>
 <script name="spfjs" src="{{ asset('assets/scripts/spfjs/spf.js') }}"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/hybrid.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 
-
+<div class="languageModal" id="languageChooser">
+    <div class="languageModalInner">
+        <h1>Languages (<a href="#" class="modalCloseLink">&times;</a>)</h1>
+        <ul>
+            <li><a href="{{ path('setLang', {'language': "en"}) }}">English</a></li>
+            <li><a href="{{ path('setLang', {'language': "de"}) }}">Deutsch</a></li>
+        </ul>
+    </div>
+</div>
 
 
 {% block javascripts %}{% endblock %}

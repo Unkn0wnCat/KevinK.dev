@@ -1,0 +1,12 @@
+blogHomeText: Willkommen auf meinem Blog, dem Ort wo ich meine Gedanken und Erfahrungen teile und hoffentlich interessant wiedergebe.
+noPosts: Kein Inhalt verfügbar...
+read more: Mehr lesen
+"page %page%/%pageCount%": Seite %page% von %page%
+"by %author% on %publishdate% in %categorylink%": von %author% am %publishdate% in %categorylink%
+category: Kategorie
+
+chooseCategory: Kategorie wählen
+
+
+general: Allgemein
+generalDescription: Allgemeine Posts über dies und das.
