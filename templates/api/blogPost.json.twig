@@ -1,0 +1,16 @@
+{
+    "id": {{ post.id|default("-1") }},
+    "title": "{% filter e("js") %}{{ post.title }}{% endfilter %}",
+    "summary": "{% filter e("js") %}{{ post.summary }}{% endfilter %}",
+    "content": "{% filter e("js") %}{{ post.content }}{% endfilter %}",
+    "image": "{{ post.image }}",
+    "publishTime": "{% filter e("js") %}{{ post.publishTime|date("U") }}{% endfilter %}",
+    "author": {
+        "id": {{ post.author.id|default("-1") }},
+        "publicName": "{% filter e("js") %}{{ post.author.publicName }}{% endfilter %}"
+    },
+    "category": {
+        "id": {{ post.category.id|default("-1") }},
+        "name": "{% filter e("js") %}{{ post.category.languageKey|trans({}, 'blog', lang) }}{% endfilter %}"
+    }
+}
