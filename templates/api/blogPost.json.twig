@@ -1,8 +1,8 @@
 {
     "id": {{ post.id|default("-1") }},
     "title": "{% filter e("js") %}{{ post.title }}{% endfilter %}",
-    "summary": "{% filter e("js") %}{{ post.summary }}{% endfilter %}",
-    "content": "{% filter e("js") %}{{ post.content }}{% endfilter %}",
+    "summary": "{% filter e("js") %}{{ post.summary|markdown|striptags()|raw }}{% endfilter %}",
+    "content": "{% filter e("js") %}{{ post.content|markdown|striptags('<p>')|raw }}{% endfilter %}",
     "image": "{{ post.image }}",
     "publishTime": "{% filter e("js") %}{{ post.publishTime|date("U") }}{% endfilter %}",
     "formattedTime": "{% filter e("js") %}{{ post.publishTime|date("d.m.Y") }}{% endfilter %}",
