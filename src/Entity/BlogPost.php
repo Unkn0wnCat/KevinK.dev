@@ -163,7 +163,9 @@ class BlogPost
 
     public function getImage(): ?string
     {
-        return $this->image;
+        if((substr($this->image, 0, 1) === "/")) {
+            return "https://kevink.dev".$this->image;
+        } else return $this->image;
     }
 
     public function setImage(string $image): self
