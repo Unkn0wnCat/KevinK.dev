@@ -37,6 +37,21 @@ class BlogPostRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param $maxPosts
+     * @param $offset
+     * @return BlogPost[]
+     */
+    public function findAllVisiblePosts()
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.visible = true')
+            ->orderBy('p.publishTime', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
      * @param $category
      * @param $maxPosts
      * @param $offset

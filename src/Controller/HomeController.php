@@ -75,11 +75,37 @@ class HomeController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function siteMap(Request $request) {
+    public function siteMap(Request $request, BlogPostRepository $blogPostRepository, BlogCategoryRepository $blogCategoryRepository) {
         $urls = [];
         $hostname = $request->getHost();
 
         $urls[] = ['loc' => $this->get("router")->generate("index"), 'changefreq' => 'weekly', 'priority' => '1.0'];
+        $urls[] = ['loc' => $this->get("router")->generate("blogHome"), 'changefreq' => 'weekly', 'priority' => '1.0'];
+
+
+        $categories = $blogCategoryRepository->findAll();
+        foreach ($categories as $category) {
+            $path = $this->get("router")->generate("blogCategory", ["urlName"=>$category->getUrlName()]);
+
+            $urls[] = ['loc' => $path, 'changefreq' => 'weekly', 'priority' => '1.0'];
+        }
+
+
+        $posts = $blogPostRepository->findAllVisiblePosts();
+        foreach ($posts As $post) {
+            $post = $this->localize->getLocalizedContent($post, $request->getLocale());
+            $path =  $this->get("router")->generate("blogView", [
+                "post_id" => $post->getId(),
+                "day" =>  date("d", $post->getPublishTime()->getTimestamp()),
+                "month" =>  date("m", $post->getPublishTime()->getTimestamp()),
+                "year" =>  date("Y", $post->getPublishTime()->getTimestamp()),
+                "canonical" => $post->getCanonicalName()
+            ]);
+            $urls[] = ['loc' => $path, 'changefreq' => 'monthly', 'priority' => '1.0'];
+        }
+        $urls[] = ['loc' => $this->get("router")->generate("impressum"), 'changefreq' => 'monthly', 'priority' => '1.0'];
+        $urls[] = ['loc' => $this->get("router")->generate("datenschutz"), 'changefreq' => 'monthly', 'priority' => '1.0'];
+        $urls[] = ['loc' => $this->get("router")->generate("disclaimer"), 'changefreq' => 'monthly', 'priority' => '1.0'];
 
         $response = new Response();
 
