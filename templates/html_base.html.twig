@@ -91,6 +91,10 @@
 
     {% block stylesheets %}{% endblock %}
     {% block meta %}{% endblock %}
+    {% block canonical %}
+        <link rel="canonical" href="https://kevink.dev{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
+
+    {% endblock %}
 </head>
 <body>
 <div class="topBar">

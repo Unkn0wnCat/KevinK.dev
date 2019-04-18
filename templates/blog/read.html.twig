@@ -45,6 +45,11 @@
 
 {% endblock %}
 
+{% block canonical %}
+    <link rel="canonical" href="https://kevink.dev{{ path("blogViewDirect", { "post_id": post.id }) }}"/>
+
+{% endblock %}
+
 {% block title %}{{ post.title|raw }}{% endblock %}
 
 {% block content %}
