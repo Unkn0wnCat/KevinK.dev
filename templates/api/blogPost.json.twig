@@ -5,6 +5,7 @@
     "content": "{% filter e("js") %}{{ post.content }}{% endfilter %}",
     "image": "{{ post.image }}",
     "publishTime": "{% filter e("js") %}{{ post.publishTime|date("U") }}{% endfilter %}",
+    "formattedTime": "{% filter e("js") %}{{ post.publishTime|date("d.m.Y") }}{% endfilter %}",
     "author": {
         "id": {{ post.author.id|default("-1") }},
         "publicName": "{% filter e("js") %}{{ post.author.publicName }}{% endfilter %}"
