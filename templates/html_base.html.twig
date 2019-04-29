@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% trans %}Seite{% endtrans %}{% endblock %} | KevinK.dev</title>
+
+    <link rel="manifest" href="{{ path('webmanifest') }}">
+
     <link name="kevin-main" rel="stylesheet" href="{{ asset('assets/styles/kevinMain.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- ToDo: Lokale Google Fonts -->
@@ -89,8 +92,25 @@
     </script>
     <!-- End Matomo Code -->
 
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="KevinK.dev">
+    <meta name="apple-mobile-web-app-title" content="KevinK.dev">
+    <meta name="theme-color" content="#000710">
+    <meta name="msapplication-navbutton-color" content="#000710">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="msapplication-TileColor" content="#000710">
+    <meta name="msapplication-TileImage" content="{{ asset('assets/images/logo/fullbglogo.png') }}">
+    <meta name="msapplication-config" content="{{ asset('browserconfig.xml') }}" />
+    <meta property="og:site_name" content="KevinK.dev" />
+
     {% block stylesheets %}{% endblock %}
-    {% block meta %}{% endblock %}
+    {% block meta %}
+        <meta property="og:title" content="" />
+    {% endblock %}
     {% block canonical %}
         <link rel="canonical" href="https://kevink.dev{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
 

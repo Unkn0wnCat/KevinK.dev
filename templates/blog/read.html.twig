@@ -8,7 +8,6 @@
     <meta name="description" content="{{ post.summary }}">
     <meta name="author" content="{{ post.author.publicName }}">
     <meta property="og:url" content="https://kevink.dev{{ path("blogView", {"year": post.publishTime|date("Y"), "month": post.publishTime|date("m"), "day": post.publishTime|date("d"), "post_id": post.id, "canonical": post.canonicalName}) }}" />
-    <meta property="og:site_name" content="KevinK.dev" />
     <meta property="article:published_time" content="{{ post.publishTime|date("Y-m-d") }}T{{ post.publishTime|date("G:i:sP") }}" />
     <meta property="og:image" content="https://kevink.dev{{ post.image }}" />
     <meta name="twitter:card" content="summary_large_image" />

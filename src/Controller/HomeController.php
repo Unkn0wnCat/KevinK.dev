@@ -69,6 +69,17 @@ class HomeController extends AbstractController
 
         ]);
     }
+    /**
+     * @Route("/manifest.webmanifest", name="webmanifest")
+     */
+    public function webmanifest()
+    {
+        return $this->render('manifest.webmanifest.twig', [
+
+        ]);
+    }
+
+
 
     /**
      * @Route("/sitemap.xml")
