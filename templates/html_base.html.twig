@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app.request.locale }}">
+<html lang="{{ app.request.locale }}" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% trans %}Seite{% endtrans %}{% endblock %} | KevinK.dev</title>
@@ -107,9 +107,13 @@
     <meta name="msapplication-config" content="{{ asset('browserconfig.xml') }}" />
     <meta property="og:site_name" content="KevinK.dev" />
 
+    <meta name="twitter:site" content="@unkn0wnkevin"/>
+    <meta name="twitter:creator" content="@unkn0wnkevin"/>
+
     {% block stylesheets %}{% endblock %}
     {% block meta %}
-        <meta property="og:title" content="" />
+        <meta property="og:title" content="Page" />
+        <meta name="twitter:card" content="summary"/>
     {% endblock %}
     {% block canonical %}
         <link rel="canonical" href="https://kevink.dev{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
