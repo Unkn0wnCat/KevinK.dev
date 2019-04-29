@@ -130,8 +130,8 @@
         <div class="has-dropdown">
             <a id="navBtnBlog" href="{{ path('blogHome') }}" {% if module|default("") == "blog" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}blog{% endtrans %}</a>
             <div class="dropdown">
-                <a href="{{ path("blogHome") }}">Home</a>
-                <a href="{{ path("blogCategory", {"urlName": "general"}) }}">{{ "general"|trans({}, "blog") }}</a>
+                <a href="{{ path("blogHome") }}" class="spf-link">Home</a>
+                <a href="{{ path("blogCategory", {"urlName": "general"}) }}" class="spf-link">{{ "general"|trans({}, "blog") }}</a>
             </div>
         </div>
     </nav>
