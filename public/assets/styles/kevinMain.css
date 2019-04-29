@@ -131,7 +131,7 @@ body, html {
     margin-right: 5px;
 }
 
-section > div:not(.profile), section > article {
+section > div:not(.profile), section > article, .section > div:not(.profile), .section > article {
     max-width: var(--body-width);
     width: 100%;
     padding: 40px 20px;
@@ -433,4 +433,35 @@ footer a {
     min-width: 30px;
     display: block;
     height: 40px;
+}
+
+.amazonAlexaSection {
+    height: 90px;
+    background: #2b313f;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.amazonAlexaSection img {
+    height: 100%;
+}
+
+.amazonAlexaSection > div {
+    display: flex;
+    height: 100%;
+    padding: 20px !important;
+    line-height: 50px;
+    font-size: 1.7em;
+    color: white;
+}
+
+.amazonAlexaSection > div > span {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.amazonAlexaSection > div > i {
+    line-height: 50px !important;
 }
