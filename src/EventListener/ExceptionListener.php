@@ -18,8 +18,9 @@ class ExceptionListener
         // You get the exception object from the received event
         $exception = $event->getException();
         if($exception instanceof NotFoundHttpException) {
-            if($event->getRequest()->getRequestUri() && !$this->urlHasLocale($event->getRequest()->getRequestUri())) {
-                $event->setResponse(new RedirectResponse("/".$this->locales[0]."".$event->getRequest()->getRequestUri()));
+            if($event->getRequest()->getRequestUri() && !$this->urlHasLocale($event->getRequest()->getRequestUri(), $event->getRequest()->cookies->get("lang") ?: "")) {
+                dump($event->getRequest()->cookies->get("lang"));
+                $event->setResponse(new RedirectResponse("/".($event->getRequest()->cookies->get("lang") ?: $this->locales[0])."".$event->getRequest()->getRequestUri()));
             }
         }
 
@@ -27,8 +28,8 @@ class ExceptionListener
         //
     }
 
-    private function urlHasLocale(string $url) {
-
+    private function urlHasLocale(string $url, $bonusLang = "") {
+        if($bonusLang != "") $this->locales[] = $bonusLang;
         foreach ($this->locales as $locale) {
             if($this->startsWith($url, "/".$locale."/")) {
                 return true;

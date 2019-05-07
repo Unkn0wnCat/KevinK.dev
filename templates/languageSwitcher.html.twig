@@ -3,7 +3,7 @@
     <h1>Languages (<a href="#" class="modalCloseLink">&times;</a>)</h1>
     <h3>Current Language: {% trans %}thisLang{% endtrans %}</h3>
     <ul>
-        <li><a href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "en"})) }}" class="spf-link">English</a></li>
-        <li><a href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "de"})) }}" class="spf-link">Deutsch</a></li>
+        <li><a href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "en"})) }}">English</a></li>
+        <li><a href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "de"})) }}">Deutsch</a></li>
     </ul>
 </div>

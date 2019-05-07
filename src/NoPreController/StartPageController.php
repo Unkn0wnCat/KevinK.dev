@@ -25,7 +25,7 @@ class StartPageController extends AbstractController
 
 
         return $this->redirectToRoute("index", [
-            "_locale" => $defaultLocale
+            "_locale" => $request->cookies->get("lang") ?: $defaultLocale
         ]);
     }
 
