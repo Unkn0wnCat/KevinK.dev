@@ -1,4 +1,5 @@
 User-agent: *
 Allow: *
-Disallow: https://analytics.kevink.dev/*
+Disallow: /admin/*
+Disallow: /admin
 Sitemap: https://kevink.dev/sitemap.xml
