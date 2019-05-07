@@ -39,6 +39,10 @@ class ProjectsController extends AbstractController
         $count = $projectRepository->count(["visible" => true]);
         $pageCount = ceil($count / $this->projectsPerPage);
 
+        if($pageCount == 0) {
+            $pageCount = 1;
+        }
+
         if($page > $pageCount) {
             return $this->redirectToRoute("projectsPage",[
                 "page" => $pageCount
