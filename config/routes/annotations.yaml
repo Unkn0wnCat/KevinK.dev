@@ -1,3 +1,10 @@
 controllers:
-    resource: ../../src/Controller/
-    type: annotation
+  resource: ../../src/Controller/
+  type: annotation
+  prefix:
+    en: '/en'
+    de: '/de'
+
+noprecontrollers:
+  resource: ../../src/NoPreController/
+  type: annotation

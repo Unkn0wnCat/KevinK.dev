@@ -121,6 +121,10 @@
     {% endblock %}
 
 
+    <link rel="alternate" hreflang="en" href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "en"})) }}"/>
+    <link rel="alternate" hreflang="de" href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "de"})) }}"/>
+
+
 </head>
 <body>
 <div class="topBar">
@@ -158,13 +162,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 
 <div class="languageModal" id="languageChooser">
-    <div class="languageModalInner">
-        <h1>Languages (<a href="#" class="modalCloseLink">&times;</a>)</h1>
-        <ul>
-            <li><a href="{{ path('setLang', {'language': "en"}) }}">English</a></li>
-            <li><a href="{{ path('setLang', {'language': "de"}) }}">Deutsch</a></li>
-        </ul>
-    </div>
+    {% include "languageSwitcher.html.twig" %}
 </div>
 
 

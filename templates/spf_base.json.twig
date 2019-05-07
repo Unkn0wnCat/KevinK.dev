@@ -3,7 +3,8 @@
     "head": "{% filter e("js") %}{% block stylesheets %}{% endblock %}{% endfilter %}",
     "foot": "{% filter e("js") %}{% block javascripts %}{% endblock %}{% endfilter %}",
     "body": {
-        "content": "{% filter e("js") %}{% block content %}<section><article>{% block body %}{% endblock %}</article></section>{% endblock %}{% endfilter %}"
+        "content": "{% filter e("js") %}{% block content %}<section><article>{% block body %}{% endblock %}</article></section>{% endblock %}{% endfilter %}",
+        "languageChooser": "{% filter e("js") %}{% include "languageSwitcher.html.twig" %}{% endfilter %}"
     },
     "attr": {
         "navBtnHome": {

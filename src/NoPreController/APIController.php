@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\NoPreController;
 
 use App\Entity\BlogPost;
 use App\Repository\BlogPostRepository;
@@ -11,7 +11,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class APIController
- * @package App\Controller
  * @Route("/api")
  */
 class APIController extends AbstractController

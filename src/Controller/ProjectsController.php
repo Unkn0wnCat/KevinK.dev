@@ -89,7 +89,7 @@ class ProjectsController extends AbstractController
     }
 
     /**
-     * @Route("/view/{urlName}/edit", name="projects_view")
+     * @Route("/view/{urlName}/edit", name="projects_edit")
      * @param Project $project
      * @return Response
      */
