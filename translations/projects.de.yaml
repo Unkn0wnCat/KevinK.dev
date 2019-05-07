@@ -1,0 +1,31 @@
+project: Projekt
+
+view: Öffnen
+viewexternal: Projektseite
+
+projectsHomeText: Das ist woran ich grade arbeite oder woran ich gearbeitet habe.
+
+about %project%: Über %project%
+downloads: Downloads
+download: Herrunterladen
+
+downloadLatest: Neuste Version
+downloadBeta: Neuste Beta
+downloadNightly: Nächtliche Version
+
+version: Version
+
+statusLive: Live
+statusWIP: In Arbeit
+statusHold: Gehalten
+statusCancelled: Abgebrochen
+
+viewGitHub: Auf GitHub öffnen
+viewGitLab: Auf GitLab öffnen
+viewGitRepo: Öffne Git-Repository
+viewBitBucket: Auf BitBucket öffnen
+viewExternal: Projektseite öffnen
+
+links: Links
+
+noProjects: Keine Projekte

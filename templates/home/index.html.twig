@@ -78,7 +78,7 @@
     </section>
     <section class="recentsSection">
         <div>
-            <h1>Neueste Posts</h1>
+            <h1>{% trans from "homepage" %}newestPosts{% endtrans %}</h1>
             <div class="postList">
                 {% for post in posts %}
                     {% include 'postcard.html.twig' with { "postTitle": post.title, "teaserText": post.summary, "link": path("blogView", {"year": post.publishTime|date("Y"), "month": post.publishTime|date("m"), "day": post.publishTime|date("d"), "post_id": post.id, "canonical": post.canonicalName}), "postImage": post.image } %}

@@ -29,3 +29,10 @@ services:
 
     App\EventSubscriber\LocaleSubscriber:
         arguments: ['%kernel.default_locale%']
+
+    App\Twig\l10nExtension:
+        class: App\Twig\l10nExtension
+        arguments:
+            - '@request_stack'
+        tags:
+            - { name: twig.extension, priority: 255 }

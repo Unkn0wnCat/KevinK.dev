@@ -19,7 +19,7 @@ class Localize {
     /**
      * @param array $content
      * @param string $locale
-     * @param string $fallback
+     * @param string|boolean $fallback
      * @return string
      */
     public function getLocalizedString(array $content, string $locale, string $fallback = "Untitled") : string

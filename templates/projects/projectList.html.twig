@@ -1,0 +1,12 @@
+<div class="projectList">
+    {% for project in projects %}
+        {% include 'projects/projectCard.html.twig' with { "project": project } %}
+    {% endfor %}
+
+    {% if projects|length == 0 %}
+        <h4>{% trans from "projects" %}noProjects{% endtrans %}</h4>
+    {% endif %}
+
+
+</div>
+

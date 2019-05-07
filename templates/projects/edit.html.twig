@@ -1,0 +1,218 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans from "projects" %}project{% endtrans %}: {{ project.name|decodeLocaleArray|default("Unset") }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("assets/styles/editormd/editormd.min.css") }}" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+
+    <script src="{{ asset('assets/scripts/editormd/editormd.js') }}"></script>
+    <script src="{{ asset('assets/scripts/editormd/languages/en.js') }}"></script>
+
+    <script type="text/javascript">
+        var contentEditor;
+
+        function initEditor(md){
+            contentEditor = editormd("editor", {
+                width: "100%",
+                height: 500,
+                path : '{{ asset("assets/scripts/editormd/lib/") }}',
+                theme : "dark",
+                previewTheme : "light",
+                editorTheme : "pastel-on-dark",
+                markdown : md,
+                codeFold : true,
+                //syncScrolling : false,
+                saveHTMLToTextarea : true,
+                searchReplace : true,
+                //watch : false,
+                htmlDecode : "style,script,iframe|on*",
+                //toolbar  : false,
+                //previewCodeHighlight : false,
+                emoji : true,
+                taskList : true,
+                tocm            : true,
+                tex : true,
+                flowChart : true,
+                sequenceDiagram : true,
+                //dialogLockScreen : false,
+                //dialogShowMask : false,
+                //dialogDraggable : false,
+                //dialogMaskOpacity : 0.4,
+                //dialogMaskBgColor : "#000",
+                imageUpload : true,
+                imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                imageUploadURL : "./php/upload.php",
+                onload : function() {
+                    console.log('onload', this);
+                    //this.fullscreen();
+                    //this.unwatch();
+                    //this.watch().fullscreen();
+
+                    //this.setMarkdown("#PHP");
+                    //this.width("100%");
+                    //this.height(480);
+                    //this.resize("100%", 640);
+                },
+                onchange : contentChange
+            });
+        }
+        
+        function contentChange() {
+            
+        }
+
+        {#var currentLang = "en";
+
+        var contents = {{ post.content|json_encode()|raw }};
+        var summaries = {{ post.summary|json_encode()|raw }};
+        var titles = {{ post.title|json_encode()|raw }};
+
+        if(contents == null) {
+            contents = {};
+        } else {
+            contents = JSON.parse(contents);
+        }
+        if(summaries == null) {
+            summaries = {};
+        } else {
+            summaries = JSON.parse(summaries);
+        }
+        if(titles == null) {
+            titles = {};
+        } else {
+            titles = JSON.parse(titles);
+        }
+
+        function contentChange() {
+            contents[currentLang] = contentEditor.getMarkdown();
+            summaries[currentLang] = $("#summary").val();
+            titles[currentLang] = $("#title").text();
+
+            document.title = "Editor: "+titles[currentLang]+" | KevinK.dev";
+
+            $("#edit_post_title").val(JSON.stringify(titles));
+            $("#edit_post_summary").val(JSON.stringify(summaries));
+            $("#edit_post_content").val(JSON.stringify(contents));
+        }
+
+        function switchLang(newLang) {
+            var md = "Write here!";
+            if(typeof contents[newLang] !== "undefined") {
+                md = contents[newLang];
+            }
+
+            var summary = "Write here!";
+            if(typeof summaries[newLang] !== "undefined") {
+                summary = summaries[newLang];
+            }
+
+            var title = "Write here!";
+            if(typeof titles[newLang] !== "undefined") {
+                title = titles[newLang];
+            }
+
+            document.title = "Editor: "+title+" | KevinK.dev";
+
+            contentEditor.setMarkdown(md);
+            $("#summary").val(summary);
+            $("#title").text(title);
+
+            currentLang = newLang;
+        }#}
+
+        $("input[type=checkbox]").change(function (ev) {
+
+        });
+
+        function checkAllActive() {
+            if(ev.currentTarget.checked) $(".projectAbout").addClass("active");
+            else $(".projectAbout").removeClass("active");
+        }
+
+        $(function() {
+
+            initEditor($("#editor").text());
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <section class="projectHeader">
+        <div>
+            <div class="headerBackground" style="background-image: url({{ project.image|default("") }})"></div>
+            <header>
+                <div class="headerInner">
+                    <h1>{% trans from "projects" %}project{% endtrans %}: {{ project.name|decodeLocaleArray|default("Unset") }}</h1>
+                    <span class="postMeta">{{ project.headline|decodeLocaleArray|default("No headline set") }}</span>
+                </div>
+            </header>
+            <div class="headerPlaceholder"></div>
+        </div>
+    </section>
+        <section class="projectAbout">
+            <article>
+                <h1>{{ "about %project%"|trans({'%project%': project.name|decodeLocaleArray}, "projects") }} <input type="checkbox" {% if project.about|default(false) %}checked="checked"{% endif %}></h1>
+                <div id="editor">{# project.about|decodeLocaleArray|markdown #}</div>
+            </article>
+        </section>
+        <section class="projectDownloads">
+            <div>
+                <h1>{% trans from "projects" %}downloads{% endtrans %} <input type="checkbox" {% if project.modules.downloads|default(false) %}checked="checked"{% endif %}></h1>
+
+                <table>
+                    <tr><th>{% trans from "projects" %}version{% endtrans %}</th><th></th></tr>
+                    {% for download in project.modules.downloads %}
+                        <tr>
+                            <td>{{ download.name }}</td>
+                            <td>
+                                <div class="downloadDropdown">
+                                    <a href="javascript:void(0);">{% trans from "projects" %}download{% endtrans %}</a>
+                                    <div class="dropdown">
+                                        {% for link in download.links %}
+                                            {% if link.type == "source" %}
+                                                <a href="{{ link.url }}" target="_blank" title="{{ link.text|default("Source") }}"><i class="fas fa-file-archive"></i> {{ link.text|default("Source") }}</a>
+                                            {% elseif link.type == "windows" %}
+                                                <a href="{{ link.url }}" target="_blank" title="{{ link.text|default("Windows") }}"><i class="fab fa-windows"></i> {{ link.text|default("Windows") }}</a>
+                                            {% elseif link.type == "linux" %}
+                                                <a href="{{ link.url }}" target="_blank" title="{{ link.text|default("Linux") }}"><i class="fab fa-linux"></i> {{ link.text|default("Linux") }}</a>
+                                            {% elseif link.type == "mac" %}
+                                                <a href="{{ link.url }}" target="_blank" title="{{ link.text|default("Mac") }}"><i class="fab fa-apple"></i> {{ link.text|default("Mac") }}</a>
+                                            {% else %}
+                                                <a href="{{ link.url }}" target="_blank" title="{{ link.text|default("Unknown") }}"><i class="fas fa-file-download"></i> {{ link.text|default("Unknown") }}</a>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </section>
+        <section class="projectLinks">
+            <div>
+                <h1>{% trans from "projects" %}links{% endtrans %} <input type="checkbox" {% if project.modules.links|default(false) %}checked="checked"{% endif %}></h1>
+                <div class="linkList" style="display: block">
+                    {% for link in project.modules.links %}
+                        <div class="projectLink">
+                            <select class="projectLinkType">
+                                <option value="github" {% if link.type == "github" %}selected{% endif %}>GitHub</option>
+                                <option value="gitlab" {% if link.type == "gitlab" %}selected{% endif %}>GitLab</option>
+                                <option value="git" {% if link.type == "git" %}selected{% endif %}>Git</option>
+                                <option value="bitbucket" {% if link.type == "bitbucket" %}selected{% endif %}>Bitbucket</option>
+                                <option value="custom" {% if link.type == "custom" %}selected{% endif %}>Custom</option>
+                            </select>
+                            <input type="url" value="{{ link.url|default("") }}" class="projectLinkURL">
+                            <input type="checkbox" {% if link.text|default(false) %}checked="checked"{% endif %}><input type="text" value="{{ link.text|default("") }}" class="customLabel">
+                        </div><br>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+{% endblock %}

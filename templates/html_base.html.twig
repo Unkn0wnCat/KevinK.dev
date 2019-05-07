@@ -119,14 +119,16 @@
         <link rel="canonical" href="https://kevink.dev{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
 
     {% endblock %}
+
+
 </head>
 <body>
 <div class="topBar">
     <nav class="topBarInner">
         <a id="navBtnHome" href="{{ path('index') }}" class="logo{% if module|default("") == "home" %} active{% endif %} spf-link">KevinK.dev</a>
         <div class="flexSpacer"></div>
-        {#<a id="navBtnProjects" href="{{ path('projects') }}" {% if module|default("") == "projects" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}projects{% endtrans %}</a>
-        <a id="navBtnPhotos" href="{{ path('photos') }}" {% if module|default("") == "photos" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}photos{% endtrans %}</a>#}
+        <a id="navBtnProjects" href="{{ path('projects') }}" {% if module|default("") == "projects" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}projects{% endtrans %}</a>
+        {#<a id="navBtnPhotos" href="{{ path('photos') }}" {% if module|default("") == "photos" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}photos{% endtrans %}</a>#}
         <div class="has-dropdown">
             <a id="navBtnBlog" href="{{ path('blogHome') }}" {% if module|default("") == "blog" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}blog{% endtrans %}</a>
             <div class="dropdown">

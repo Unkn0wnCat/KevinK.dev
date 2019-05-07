@@ -152,7 +152,7 @@ article h1, section > div > h1 {
     color: white;
 }
 
-.postList {
+.postList, .projectList {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -160,7 +160,7 @@ article h1, section > div > h1 {
     margin: 15px 0;
 }
 
-.postCard {
+.postCard, .projectCard {
     background: white;
     border-radius: 4px;
     overflow: hidden;
@@ -173,48 +173,72 @@ article h1, section > div > h1 {
     -webkit-box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
     box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
+    max-width: 300px;
 }
 
 @media(max-width: 800px) {
-    .postCard {
+    .postCard, .projectCard {
         width: calc((100% / 2) - 30px);
     }
-    .recentsSection .postCard:nth-child(3) {
+    .recentsSection .postCard:nth-child(3), .newestSection .projectCard:nth-child(3) {
         display: none;
     }
 }
 
 @media(max-width: 500px) {
-    .postCard {
+    .postCard, .newestSection {
         width: 100%;
     }
-    .recentsSection .postCard:nth-child(2) {
+    .recentsSection .postCard:nth-child(2), .newestSection .projectCard:nth-child(2) {
         display: none;
     }
 }
 
-.postCardImage {
+.projectCardActivityIndicator {
+    position: absolute;
+    margin: 12px;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.activityIndicatorGreen {
+    background: #26de81;
+}
+
+.activityIndicatorYellow {
+    background: #f7b731;
+}
+
+.activityIndicatorRed {
+    background: #fc5c65;
+}
+
+.activityIndicatorBlue {
+    background: #45aaf2;
+}
+
+.postCardImage, .projectCardImage {
     display: block;
     height: 150px;
     background-position: center;
     background-size: cover;
 }
 
-.postCardMeta {
+.postCardMeta, .projectCardMeta {
     padding: 10px;
     flex-grow: 1;
 }
 
-.postCardTitle {
+.postCardTitle, .projectCardTitle {
     display: block;
     font-size: 1.2em;
 }
 
-.postCardCTA {
+.postCardCTA, .projectCardCTA {
     display: block;
 }
 
-.postCardCTA a {
+.postCardCTA a, .projectCardCTA a {
     display: block;
     padding: 10px;
     text-align: center;
@@ -371,7 +395,7 @@ footer a {
     text-decoration: none;
 }
 
-.postContent .headerBackground {
+.postContent .headerBackground, .projectHeader .headerBackground {
     position: absolute;
     left: 0;
     width: 100%;
@@ -380,7 +404,7 @@ footer a {
     background-size: cover;
 }
 
-.postContent header {
+.postContent header, .projectHeader header {
     position: absolute;
     left: 0;
     width: 100%;
@@ -388,14 +412,14 @@ footer a {
     background: rgba(0, 0, 0, .5);
 }
 
-.postContent .headerInner {
+.postContent .headerInner, .projectHeader .headerInner {
     max-width: var(--body-width);
     width: 100%;
     margin: 0 auto;
     padding: 65px 20px 0;
 }
 
-.postContent .headerInner * {
+.postContent .headerInner *, .projectHeader .headerInner * {
     margin: 0;
     color: white;
 }
@@ -403,6 +427,19 @@ footer a {
 .postContent .headerPlaceholder {
     width: 100%;
     height: 225px;
+}
+
+.projectHeader .headerPlaceholder {
+    width: 100%;
+    height: 200px;
+}
+
+.projectHeader h1 {
+    font-size: 2em;
+}
+
+.projectHeader > div {
+    padding-bottom: 0 !important;
 }
 
 .has-dropdown > a {
@@ -464,4 +501,109 @@ footer a {
 
 .amazonAlexaSection > div > i {
     line-height: 50px !important;
+}
+
+.projectAbout {
+    background: #060606;
+    color: white;
+}
+
+.projectLinks .linkList {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.projectLinks a {
+    display: inline-block;
+    border: thin solid rgb(200, 200, 200);
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 5px;
+    color: black;
+    text-decoration-skip: none;
+    text-decoration: underline dotted currentColor;
+}
+
+.projectLinks a i.fab, .projectLinks a i.fas, .projectLinks a i.fa, .projectLinks a i.far, .projectLinks a i.fal {
+    display: inline;
+}
+
+.projectDownloads table {
+    width: 100%;
+    text-align: left;
+}
+
+.projectDownloads th, .projectDownloads td {
+    padding: 5px;
+}
+
+.projectDownloads th:nth-child(2) {
+    text-align: center;
+}
+
+.projectDownloads td:nth-child(2) {
+    width:0.1%;
+    white-space: nowrap;
+}
+
+.projectDownloads tr:nth-child(2n + 1) {
+    background: rgba(0, 0, 0, .1);
+}
+
+.downloadDropdown {
+    background: #000710;
+    border-radius: 5px;
+}
+
+.downloadDropdown > a {
+    display: inline-block;
+    padding: 5px 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.downloadDropdown .dropdown {
+    color: white;
+}
+
+.downloadFeaturedButtons {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.downloadDropdown.featured {
+    margin: 5px;
+}
+
+.downloadDropdown.featured > a {
+    padding: 15px 25px;
+}
+
+.downloadDropdown.featured > .dropdown {
+    transform: none;
+}
+
+.downloadDropdown .dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px
+}
+
+.downloadDropdown a:active ~ .dropdown, .downloadDropdown:focus-within .dropdown {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.projectCardCTAContainer {
+    display: flex;
+}
+
+.projectCardCTAContainer > :nth-child(1) {
+    border-right: thin solid rgba(255, 255, 255, .5);
+}
+
+.projectCardCTAContainer > * {
+    flex-grow: 1;
 }

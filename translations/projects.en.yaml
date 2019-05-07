@@ -1,0 +1,31 @@
+project: Project
+
+view: View
+viewexternal: Open Project-Site
+
+projectsHomeText: This is what I am working on or have worked on.
+
+about %project%: About %project%
+downloads: Downloads
+download: Download
+
+downloadLatest: Download Latest
+downloadBeta: Download Beta
+downloadNightly: Download Nightly
+
+version: Version
+
+statusLive: Live
+statusWIP: Work in Progress
+statusHold: On Hold
+statusCancelled: Cancelled
+
+viewGitHub: View on GitHub
+viewGitLab: View on GitLab
+viewGitRepo: View Git-Repository
+viewBitBucket: View on BitBucket
+viewExternal: View Project Site
+
+links: Links
+
+noProjects: No Projects.

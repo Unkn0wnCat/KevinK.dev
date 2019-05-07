@@ -1,20 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProjectsController!{% endblock %}
+{% block title %}{% trans from "modules" %}projects{% endtrans %}{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block content %}
+    <section class="projectsSection">
+        <article>
+            <h1>{% trans from "modules" %}projects{% endtrans %}</h1>
+            {% if not isHome %}
+                <h2>{{ "page %page%/%pageCount%"|trans({'%page%': page, '%pageCount%': pageCount}, "blog") }}</h2>
+            {% else %}
+                {% trans from "projects" %}projectsHomeText{% endtrans %}
+            {% endif %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            {% include 'projects/projectList.html.twig' with { "projects": projects } %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/! Projects/kevink-dev/kevink-dev-proj/src/Controller/ProjectsController.php'|file_link(0) }}">src/Controller/ProjectsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/! Projects/kevink-dev/kevink-dev-proj/templates/projects/index.html.twig'|file_link(0) }}">templates/projects/index.html.twig</a></code></li>
-    </ul>
-</div>
+            <div class="pageButtons">
+                {% if page - 1 > 0 %}<a href="{{ path("projectsPage", {"page": (page - 1)}) }}">&lt;</a>{% endif %}
+                <div class="flexSpacer">{{ "page %page%/%pageCount%"|trans({'%page%': page, '%pageCount%': pageCount}, "blog") }}</div>
+                {% if page + 1 < pageCount %}<a href="{{ path("projectsPage", {"page": (page + 1)}) }}">&gt;</a>{% endif %}
+            </div>
+        </article>
+    </section>
 {% endblock %}

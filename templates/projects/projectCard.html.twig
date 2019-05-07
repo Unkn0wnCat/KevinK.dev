@@ -1,0 +1,28 @@
+<div class="projectCard tagPHP tagCSS tagHTML tagJavaScript">
+    <div class="projectCardActivityIndicator {{ project.indicatorClass }}">{{ project.indicatorTranslationString|trans([], "projects") }}</div>
+    <div class="projectCardImage" style="background-image: url('{{ project.image }}');"></div>
+    <div class="projectCardMeta">
+        <span class="projectCardTitle">{{ project.name|decodeLocaleArray }}</span>
+        <span class="projectCardTeaser">{{ project.headline|decodeLocaleArray }}</span>
+    </div>
+    <div class="projectCardCTAContainer">
+        {% if not project.redirectToExternal %}<div class="projectCardCTA"><a href="{{ path('projects_view', {"urlName": project.urlName}) }}" class="spf-link">{% trans from "projects" %}view{% endtrans %}</a></div>{% endif %}
+        {% if project.externalURL %}<div class="projectCardCTA"><a href="{{ project.externalURL }}" target="_blank"><i class="fas fa-external-link-alt"></i> {% trans from "projects" %}viewexternal{% endtrans %}</a></div>{% endif %}
+    </div>
+</div>
+
+{#<div class="projectCard tagPHP tagCSS tagHTML tagJavaScript">
+    <div class="projectCardActivityIndicator activityIndicatorBlue">{% trans from "projects" %}statusLive{% endtrans %}</div>
+    <div class="projectCardImage" style="background-image: url('{{ asset('assets/images/mario-caruso-770233-unsplash.jpg') }}');"></div>
+    <div class="projectCardMeta">
+        <span class="projectCardTitle">KevinK.dev</span>
+        <span class="projectCardTeaser">This site</span>
+    </div>
+    <div class="projectCardCTA"><a href="" class="spf-link">{% trans from "projects" %}view{% endtrans %}</a></div>
+    <div class="projectCardCTA"><a href=""><i class="fas fa-external-link-alt"></i> {% trans from "projects" %}viewexternal{% endtrans %}</a></div>
+</div>
+
+    <div class="projectCardActivityIndicator activityIndicatorGreen">Work in Progress</div>
+    <div class="projectCardActivityIndicator activityIndicatorYellow">On Hold</div>
+    <div class="projectCardActivityIndicator activityIndicatorRed">Cancelled</div>
+#}
