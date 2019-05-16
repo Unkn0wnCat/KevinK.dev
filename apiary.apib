@@ -3,15 +3,61 @@ HOST: https://kevink.dev/api/
 
 # KevinK.dev Public API
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+The KevinK.dev Public API allows anyone to pull data from KevinK.dev without any need to pay or register.
 
 ## Blogging Module [/blog]
 
 ### Get Newest Post [GET/blog/{locale}/newest]
+
+Get the newest post in your preferred locale. If that locale is not available the system will fallback to english.
 
 + Parameters
     + locale: `en` (string) - Any supported locale.
 
 + Response 200 (application/json)
 
-        { "id": 1, "title": "Hello\u0020World\u0021", "summary": "Hello\u0020Wold,\u0020this\u0020is\u0020Kevin\u0020and\u0020this\u0020is\u0020my\u0020site.\n", "content": "echo\u0020\u0022Hello\u0020World\u0021\u0022\u003B\n\n\n\u003Cp\u003EHello\u0020World,\u0020this\u0020is\u0020Kevin.\u0020As\u0020you\u0020might\u0020have\u0020guessed\u0020from\u0020the\u0020domain\u0020of\u0020this\u0020site\u0020I\u0020am\u0020the\u0020owner.\u0020This\u0020site\u0020is\u0020my\u0020personal\u0020platform\u0020for\u0020everything\u0020I\u0020want\u0020to\u0020put\u0020out\u0020there\u0020like\u0020blog\u0020posts,\u0020projects\u0020and\u0020photos.\u0020Right\u0020now\u0020the\u0020site\u0020is\u0020under\u0020development,\u0020so\u0020there\u0020are\u0020some\u0020modules\u0020which\u0020are\u0020not\u0020enabled\u0020yet.\u003C\/p\u003E\n", "image": "https://kevink.dev/assets/images/mario-caruso-770233-unsplash.jpg", "publishTime": "1555598400", "formattedTime": "18.04.2019", "author": { "id": 1, "publicName": "Kevin\u0020Kandlbinder" }, "category": { "id": 1, "name": "General" } }
+        {
+          "id": 1,
+          "title": "Hello World!",
+          "summary": "Hello Wold, this is Kevin and this is my site.\n",
+          "content": "echo \"Hello World!\";\n\n\n<p>Hello World, this is Kevin. As you might have guessed from the domain of this site I am the owner. This site is my personal platform for everything I want to put out there like blog posts, projects and photos. Right now the site is under development, so there are some modules which are not enabled yet.</p>\n",
+          "image": "https://kevink.dev/assets/images/mario-caruso-770233-unsplash.jpg",
+          "publishTime": "1555598400",
+          "formattedTime": "18.04.2019",
+          "author": {
+            "id": 1,
+            "publicName": "Kevin Kandlbinder"
+          },
+          "category": {
+            "id": 1,
+            "name": "General"
+          }
+        }
+
+### Get Post By ID [GET/blog/{locale}/{id}]
+
+Get a specific post in your preferred locale. If that locale is not available the system will fallback to english.
+
++ Parameters
+    + locale: `en` (string) - Any supported locale.
+    + id: 1 (number) - ID of a specific post.
+    
++ Response 200 (application/json)
+        
+        {
+          "id": 1,
+          "title": "Hello World!",
+          "summary": "Hello Wold, this is Kevin and this is my site.\n",
+          "content": "echo \"Hello World!\";\n\n\n<p>Hello World, this is Kevin. As you might have guessed from the domain of this site I am the owner. This site is my personal platform for everything I want to put out there like blog posts, projects and photos. Right now the site is under development, so there are some modules which are not enabled yet.</p>\n",
+          "image": "https://kevink.dev/assets/images/mario-caruso-770233-unsplash.jpg",
+          "publishTime": "1555598400",
+          "formattedTime": "18.04.2019",
+          "author": {
+            "id": 1,
+            "publicName": "Kevin Kandlbinder"
+          },
+          "category": {
+            "id": 1,
+            "name": "General"
+          }
+        }
