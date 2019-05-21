@@ -126,10 +126,22 @@
 
 
 </head>
-<body>
+<body id="body" class="{% block bodyClasses %}{% endblock %}">
 <div class="topBar">
     <nav class="topBarInner">
         <a id="navBtnHome" href="{{ path('index') }}" class="logo{% if module|default("") == "home" %} active{% endif %} spf-link">KevinK.dev</a>
+        {% if app.user %}
+            <div class="has-dropdown">
+                <a id="navBtnAccount" href="javascript:void(0);">{{ app.user }}</a>
+
+                <div class="dropdown" style="transform: translate(calc(-50% + 95px), 0);">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="#{#TODO: Admin Login#}">{% trans %}admin{% endtrans %}</a>
+                    {% endif %}
+                    <a href="{{ path('logout') }}">{% trans %}logout{% endtrans %}</a>
+                </div>
+            </div>
+        {% endif %}
         <div class="flexSpacer"></div>
         <a id="navBtnProjects" href="{{ path('projects') }}" {% if module|default("") == "projects" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}projects{% endtrans %}</a>
         {#<a id="navBtnPhotos" href="{{ path('photos') }}" {% if module|default("") == "photos" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}photos{% endtrans %}</a>#}

@@ -607,3 +607,21 @@ footer a {
 .projectCardCTAContainer > * {
     flex-grow: 1;
 }
+
+body.login #content {
+    background: #000710;
+    color: white;
+}
+
+body.login form input[type="text"], body.login form input[type="password"], body.login form input[type="email"], body.login form textarea {
+    color: white;
+    border: thin solid white;
+}
+
+body.login form button {
+    color: white;
+}
+
+body.login .topBarInner *:not(#navBtnHome) {
+    display: none;
+}
