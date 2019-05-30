@@ -135,7 +135,7 @@ body, html {
 section > div:not(.profile), section > article, .section > div:not(.profile), .section > article {
     max-width: var(--body-width);
     width: 100%;
-    padding: 40px 20px;
+    padding: 39px 20px;
     margin: 0 auto;
 }
 
