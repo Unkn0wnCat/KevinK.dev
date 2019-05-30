@@ -29,9 +29,9 @@ class Localize {
             $content) ?
             $content[$locale] : (
             array_key_exists(
-                $this->getParameter('locale'),
+                "en",
                 $content) ?
-                $content[$this->getParameter('locale')] :
+                $content["en"] :
                 $fallback
             );
     }
