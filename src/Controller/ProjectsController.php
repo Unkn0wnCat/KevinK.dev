@@ -28,7 +28,7 @@ class ProjectsController extends AbstractController
      * @param bool $isHome
      * @return Response
      */
-    public function projectsPage(ProjectRepository $projectRepository, int $page, Request $request, $isHome = false)
+    public function projectsPage(ProjectRepository $projectRepository, int $page, $isHome = false)
     {
         if($page == 1) {
             $isHome = true;
@@ -101,6 +101,4 @@ class ProjectsController extends AbstractController
             'project' => $project
         ]);
     }
-
-    // TODO: Alles.
 }

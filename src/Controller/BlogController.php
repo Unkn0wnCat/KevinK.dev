@@ -7,8 +7,6 @@ use App\Entity\BlogPost;
 use App\Form\EditPostType;
 use App\Repository\BlogPostRepository;
 use App\Utils\Localize;
-use phpDocumentor\Reflection\Types\Boolean;
-use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +30,7 @@ class BlogController extends AbstractController
 
     /**
      * @Route("/", defaults={"page": "1"}, name="blogHome")
-     * @Route("/{page<[1-9]\d*>}", name="blogPage")
+     * @Route("/{page<[0-9]\d*>}", name="blogPage")
      * @param BlogPostRepository $blogPostRepository
      * @param int $page
      * @param Request $request
@@ -41,6 +39,10 @@ class BlogController extends AbstractController
      */
     public function blogPage(BlogPostRepository $blogPostRepository, int $page, Request $request, $isHome = false) {
         $offset = ($page - 1) * $this->postsPerPage;
+
+        if($offset < 0) {
+            $offset = 0;
+        }
 
         $count = $blogPostRepository->count(["visible" => true]);
         $pageCount = ceil($count / $this->postsPerPage);
