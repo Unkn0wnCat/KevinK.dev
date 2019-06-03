@@ -2,7 +2,7 @@
 <html lang="{{ app.request.locale }}" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{% trans %}Seite{% endtrans %}{% endblock %} | KevinK.dev</title>
+    <title>{% block fulltitle %}{% block title %}{% trans %}Seite{% endtrans %}{% endblock %} | Kevin Kandlbinder{% endblock %}</title>
 
     <link rel="manifest" href="{{ path('webmanifest') }}">
 
