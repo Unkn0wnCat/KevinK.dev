@@ -73,7 +73,7 @@
         </div>
     </section>
     {% if app.request.locale == "de" %}
-    <a class="section amazonAlexaSection" target="_blank" href="https://skills-store.amazon.de/deeplink/dp/B07QZS7ZTJ?deviceType=app&share&refSuffix=ss_copy">
+    <a class="section amazonAlexaSection" target="_blank" rel="noopener" href="https://skills-store.amazon.de/deeplink/dp/B07QZS7ZTJ?deviceType=app&share&refSuffix=ss_copy">
         <div>
             <img src="{{ asset('assets/images/amazon-alexa/Amazon_Alexa_blue_logo.svg') }}" alt="Alexa">
             <span>{% trans from "homepage" %}findMeOnAlexa{% endtrans %}</span>
