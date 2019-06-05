@@ -9,89 +9,6 @@
     <link name="kevin-main" rel="stylesheet" href="{{ asset('assets/styles/kevinMain.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- ToDo: Lokale Google Fonts -->
-    <link name="google-fonts" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Roboto" rel="stylesheet">
-    <link rel="stylesheet" name="nprogress" href="{{ asset('assets/styles/nprogress/nprogress.css') }}">
-    <!-- ToDo: Lokales Fontawesome -->
-    <link name="fontawesome" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
-    <script>
-        window.addEventListener("load", function(){
-            var _paq = _paq || [];
-            window.cookieconsent.initialise({
-                "palette": {
-                    "popup": {
-                        "background": "#252e39"
-                    },
-                    "button": {
-                        "background": "#14a7d0"
-                    }
-                },
-                "theme": "edgeless",
-                "position": "bottom-right",
-                "type": "opt-out",
-                "content": {
-                    "message": "{% trans from "trackcon" %}consentText{% endtrans %}",
-                    "allow": "{% trans from "trackcon" %}allow{% endtrans %}",
-                    "dismiss": "{% trans from "trackcon" %}hide{% endtrans %}",
-                    "deny": "{% trans from "trackcon" %}deny{% endtrans %}",
-                    "link": "{% trans from "modules" %}datasec{% endtrans %}",
-                    "href": '{{ path('datenschutz') }}'
-                },
-                "revokable": false,
-                onInitialise: function (status) {
-                    var type = this.options.type;
-                    var didConsent = this.hasConsented();
-                    if (type == 'opt-in' && didConsent) {
-                        _paq.push(['rememberConsentGiven'])
-                    }
-                    if (type == 'opt-out' && !didConsent) {
-                        _paq.push(['forgetConsentGiven']);
-                    }
-                },
-
-                onStatusChange: function(status, chosenBefore) {
-                    var type = this.options.type;
-                    var didConsent = this.hasConsented();
-                    if (type == 'opt-in' && didConsent) {
-                        _paq.push(['rememberConsentGiven'])
-                    }
-                    if (type == 'opt-out' && !didConsent) {
-                        _paq.push(['forgetConsentGiven']);
-                    }
-                },
-
-                onRevokeChoice: function() {
-                    var type = this.options.type;
-                    if (type == 'opt-in') {
-                        _paq.push(['forgetConsentGiven']);
-                    }
-                    if (type == 'opt-out') {
-                        _paq.push(['rememberConsentGiven'])
-                    }
-                },
-            })});
-    </script>
-
-    <!-- Matomo -->
-    <script type="text/javascript">
-        var _paq = window._paq || [];
-        // require user consent before processing data
-        _paq.push(['requireConsent']);
-        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-            var u="//analytics.kevink.dev/";
-            _paq.push(['setTrackerUrl', u+'matomo.php']);
-            _paq.push(['setSiteId', '1']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-        })();
-    </script>
-    <!-- End Matomo Code -->
 
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -167,17 +84,125 @@
 
 <footer>CC-BY 4.0 Kevin Kandlbinder, <a href="{{ path('impressum') }}" class="spf-link">{% trans from "modules" %}imprint{% endtrans %}</a> | <a href="{{ path('datenschutz') }}" class="spf-link">{% trans from "modules" %}datasec{% endtrans %}</a> | <a href="{{ path('disclaimer') }}" class="spf-link">{% trans from "modules" %}disclaimer{% endtrans %}</a> | <a href="#languageChooser">Language</a><span class="adminFooter">{# | <a href="{{ path('admin') }}" class="spf-link">Admin</a>#}</span></footer>
 
-<script name="jquery" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script name="kevin-main" src="{{ asset('assets/scripts/kevinMain.js') }}"></script>
-<script name="nprogress" src="{{ asset('assets/scripts/nprogress/nprogress.js') }}"></script>
-<script name="spfjs" src="{{ asset('assets/scripts/spfjs/spf.js') }}"></script>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/hybrid.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 
 <div class="languageModal" id="languageChooser">
     {% include "languageSwitcher.html.twig" %}
 </div>
 
+<link name="google-fonts" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Roboto&display=swap" rel="stylesheet">
+<link name="fontawesome" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+<script name="jquery" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script name="kevin-main" src="{{ asset('assets/scripts/kevinMain.js') }}"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+    var _paq = _paq || [];
+
+
+    window.addEventListener("load", function(){
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "#252e39"
+                },
+                "button": {
+                    "background": "#14a7d0"
+                }
+            },
+            "theme": "edgeless",
+            "position": "bottom-right",
+            "type": "opt-out",
+            "content": {
+                "message": "{% trans from "trackcon" %}consentText{% endtrans %}",
+                "allow": "{% trans from "trackcon" %}allow{% endtrans %}",
+                "dismiss": "{% trans from "trackcon" %}hide{% endtrans %}",
+                "deny": "{% trans from "trackcon" %}deny{% endtrans %}",
+                "link": "{% trans from "modules" %}datasec{% endtrans %}",
+                "href": '{{ path('datenschutz') }}'
+            },
+            "revokable": false,
+            onInitialise: function (status) {
+                var type = this.options.type;
+                var didConsent = this.hasConsented();
+                if (type == 'opt-in' && didConsent) {
+                    _paq.push(['forgetUserOptOut']);
+                    _paq.push(['rememberConsentGiven']);
+                    _paq.push(['setConsentGiven']);
+                    loadMatomoIfNotLoaded();
+                }
+                if (type == 'opt-out' && !didConsent) {
+                    _paq.push(['forgetConsentGiven']);
+                    _paq.push(['optUserOut']);
+                }
+            },
+
+            onStatusChange: function(status, chosenBefore) {
+                var type = this.options.type;
+                var didConsent = this.hasConsented();
+                if (type == 'opt-in' && didConsent) {
+                    _paq.push(['forgetUserOptOut']);
+                    _paq.push(['rememberConsentGiven']);
+                    _paq.push(['setConsentGiven']);
+                    loadMatomoIfNotLoaded();
+                }
+                if (type == 'opt-out' && !didConsent) {
+                    _paq.push(['forgetConsentGiven']);
+                    _paq.push(['optUserOut']);
+                }
+            },
+
+            onRevokeChoice: function() {
+                var type = this.options.type;
+                if (type == 'opt-in') {
+                    _paq.push(['forgetConsentGiven']);
+                    _paq.push(['optUserOut']);
+                }
+                if (type == 'opt-out') {
+                    _paq.push(['forgetUserOptOut']);
+                    _paq.push(['rememberConsentGiven']);
+                    _paq.push(['setConsentGiven']);
+                    loadMatomoIfNotLoaded();
+                }
+            },
+        })});
+</script>
+
+<script>
+    let isMatomoLoaded = false;
+
+    function loadMatomoIfNotLoaded() {
+        if(!isMatomoLoaded) {
+            loadMatomo();
+        }
+    }
+
+
+    function loadMatomo() {
+        // require user consent before processing data
+        _paq.push(['requireConsent']);
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="//analytics.kevink.dev/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+        isMatomoLoaded = true;
+    }
+</script>
+
+<script name="nprogress" src="{{ asset('assets/scripts/nprogress/nprogress.js') }}"></script>
+<link rel="stylesheet" name="nprogress" href="{{ asset('assets/styles/nprogress/nprogress.css') }}">
+<script name="spfjs" src="{{ asset('assets/scripts/spfjs/spf.js') }}"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/hybrid.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 
 {% block javascripts %}{% endblock %}
 </body>
