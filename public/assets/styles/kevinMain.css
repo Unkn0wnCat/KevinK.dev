@@ -118,8 +118,7 @@ body, html {
     color: black;
     transition: text-decoration .5s;
     text-decoration: underline dotted rgba(0, 0, 0, 0);
-    padding-left: 25px;
-    margin: 3px 0;
+    padding: 6px 0 6px 25px;
 }
 
 .contactLink:hover, .contactLink:active {
