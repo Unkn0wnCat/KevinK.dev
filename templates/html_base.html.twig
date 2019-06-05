@@ -38,6 +38,12 @@
 
     {% endblock %}
 
+    <link name="google-fonts" rel="preload" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Roboto&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link name="google-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Roboto&display=swap"></noscript>
+
+    <link name="fontawesome" rel="preload" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
+    <noscript><link name="fontawesome" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous"></noscript>
+
 
     <link rel="alternate" hreflang="en" href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "en"})) }}"/>
     <link rel="alternate" hreflang="de" href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "de"})) }}"/>
@@ -88,12 +94,6 @@
 <div class="languageModal" id="languageChooser">
     {% include "languageSwitcher.html.twig" %}
 </div>
-
-<link name="google-fonts" rel="preload" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Roboto&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link name="google-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Roboto&display=swap"></noscript>
-
-<link name="fontawesome" rel="preload" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
-<noscript><link name="fontawesome" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous"></noscript>
 
 
 
