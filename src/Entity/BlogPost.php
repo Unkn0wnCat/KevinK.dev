@@ -168,6 +168,11 @@ class BlogPost
         } else return $this->image;
     }
 
+    public function getImageRaw(): ?string
+    {
+        return $this->image;
+    }
+
     public function setImage(string $image): self
     {
         $this->image = $image;

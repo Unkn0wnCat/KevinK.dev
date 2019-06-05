@@ -1,6 +1,6 @@
 <div class="postList">
     {% for post in posts %}
-        {% include 'postcard.html.twig' with { "postTitle": post.title, "teaserText": post.summary, "link": path("blogView", {"year": post.publishTime|date("Y"), "month": post.publishTime|date("m"), "day": post.publishTime|date("d"), "post_id": post.id, "canonical": post.canonicalName}), "postImage": post.image } %}
+        {% include 'postcard.html.twig' with { "postTitle": post.title, "teaserText": post.summary, "link": path("blogView", {"year": post.publishTime|date("Y"), "month": post.publishTime|date("m"), "day": post.publishTime|date("d"), "post_id": post.id, "canonical": post.canonicalName}), "postImage": post.imageRaw } %}
     {% endfor %}
 
     {% if posts|length == 0 %}

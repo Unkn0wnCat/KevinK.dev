@@ -159,3 +159,7 @@ fabric.properties
 /web/js/
 
 # End of https://www.gitignore.io/api/symfony,phpstorm
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###

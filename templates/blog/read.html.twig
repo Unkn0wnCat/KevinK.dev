@@ -56,7 +56,7 @@
 {% block content %}
     <section class="postContent">
         <article>
-            <div class="headerBackground" data-bg="url({{ post.image }})"></div>{#TODO: Add Low-Res version to always load#}
+            <div class="headerBackground lazy" data-bg="url({{ asset(post.imageRaw) | imagine_filter("w1920") }})"></div>{#TODO: Add Low-Res version to always load#}
             <header>
                 <div class="headerInner">
                     <h1>{{ post.title }}</h1>

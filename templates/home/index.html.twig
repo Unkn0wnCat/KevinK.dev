@@ -54,7 +54,7 @@
 
     <section class="heroSection">
         <div class="profile">
-            <div style="background-image: url('https://www.gravatar.com/avatar/be61a4cafbeb66db12fc508a2de9a80c?s=350');" class="profileImage"></div>
+            <div data-bg="url(https://www.gravatar.com/avatar/be61a4cafbeb66db12fc508a2de9a80c?s=350)" class="profileImage lazy"></div>
             <div class="profileCard">
                 <span class="hello">{% trans from "homepage" %}hello{% endtrans %}</span>
                 <span class="name">Kevin Kandlbinder</span>
@@ -92,7 +92,7 @@
             <h1>{% trans from "homepage" %}newestPosts{% endtrans %}</h1>
             <div class="postList">
                 {% for post in posts %}
-                    {% include 'postcard.html.twig' with { "postTitle": post.title, "teaserText": post.summary, "link": path("blogView", {"year": post.publishTime|date("Y"), "month": post.publishTime|date("m"), "day": post.publishTime|date("d"), "post_id": post.id, "canonical": post.canonicalName}), "postImage": post.image } %}
+                    {% include 'postcard.html.twig' with { "postTitle": post.title, "teaserText": post.summary, "link": path("blogView", {"year": post.publishTime|date("Y"), "month": post.publishTime|date("m"), "day": post.publishTime|date("d"), "post_id": post.id, "canonical": post.canonicalName}), "postImage": post.imageRaw } %}
                 {% endfor %}
             </div>
         </div>
