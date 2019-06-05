@@ -1,6 +1,6 @@
 <div class="projectCard tagPHP tagCSS tagHTML tagJavaScript">
     <div class="projectCardActivityIndicator {{ project.indicatorClass }}">{{ project.indicatorTranslationString|trans([], "projects") }}</div>
-    <div class="projectCardImage" style="background-image: url('{{ project.image }}');"></div>
+    <div class="projectCardImage lazy" data-bg="url({{ project.image }})"></div>{#TODO: Add Low-Res version to always load#}
     <div class="projectCardMeta">
         <span class="projectCardTitle">{{ project.name|decodeLocaleArray }}</span>
         <span class="projectCardTeaser">{{ project.headline|decodeLocaleArray }}</span>

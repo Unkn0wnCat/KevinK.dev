@@ -16,6 +16,9 @@ $(function() {
     });
 
     $(document).on("spfdone", function() {
+        if (lazyLoadInstance) {
+            lazyLoadInstance.update();
+        }
         NProgress.remove();
         hljs.initHighlighting.called = false;
         hljs.initHighlighting();
@@ -30,5 +33,10 @@ $(function() {
         } else {
             firstClick = true;
         }
+    });
+
+    let lazyLoadInstance = new LazyLoad({
+        elements_selector: ".lazy",
+        use_native: true
     });
 });

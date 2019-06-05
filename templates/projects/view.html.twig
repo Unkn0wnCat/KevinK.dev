@@ -5,7 +5,7 @@
 {% block content %}
     <section class="projectHeader">
         <div>
-            <div class="headerBackground" style="background-image: url({{ project.image }})"></div>
+            <div class="headerBackground" data-bg="url({{ project.image }})"></div>{#TODO: Add Low-Res version to always load#}
             <header>
                 <div class="headerInner">
                     <h1>{% trans from "projects" %}project{% endtrans %}: {{ project.name|decodeLocaleArray }}</h1>
