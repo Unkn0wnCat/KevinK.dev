@@ -39,12 +39,21 @@
     {% endblock %}
 
 
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KNGX3QF');
+    </script>
+
     <link rel="alternate" hreflang="en" href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "en"})) }}"/>
     <link rel="alternate" hreflang="de" href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "de"})) }}"/>
-
-
 </head>
 <body id="body" class="{% block bodyClasses %}{% endblock %}">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNGX3QF"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div class="topBar">
     <nav class="topBarInner">
         <a id="navBtnHome" href="{{ path('index') }}" class="logo{% if module|default("") == "home" %} active{% endif %} spf-link">KevinK.dev</a>
@@ -107,6 +116,8 @@
 <script>
     var _paq = _paq || [];
 
+    let consent;
+
 
     window.addEventListener("load", function(){
         window.cookieconsent.initialise({
@@ -134,14 +145,11 @@
                 var type = this.options.type;
                 var didConsent = this.hasConsented();
                 if (type == 'opt-in' && didConsent) {
-                    _paq.push(['forgetUserOptOut']);
-                    _paq.push(['rememberConsentGiven']);
-                    _paq.push(['setConsentGiven']);
-                    loadMatomoIfNotLoaded();
+                    consent = true;
+                    loadAnalyticsIfNotLoaded();
                 }
                 if (type == 'opt-out' && !didConsent) {
-                    _paq.push(['forgetConsentGiven']);
-                    _paq.push(['optUserOut']);
+                    consent = false;
                 }
             },
 
@@ -149,57 +157,39 @@
                 var type = this.options.type;
                 var didConsent = this.hasConsented();
                 if (type == 'opt-in' && didConsent) {
-                    _paq.push(['forgetUserOptOut']);
-                    _paq.push(['rememberConsentGiven']);
-                    _paq.push(['setConsentGiven']);
-                    loadMatomoIfNotLoaded();
+                    consent = true;
+                    loadAnalyticsIfNotLoaded();
                 }
                 if (type == 'opt-out' && !didConsent) {
-                    _paq.push(['forgetConsentGiven']);
-                    _paq.push(['optUserOut']);
+                    consent = false;
                 }
             },
 
             onRevokeChoice: function() {
                 var type = this.options.type;
                 if (type == 'opt-in') {
-                    _paq.push(['forgetConsentGiven']);
-                    _paq.push(['optUserOut']);
+                    consent = false;
                 }
                 if (type == 'opt-out') {
-                    _paq.push(['forgetUserOptOut']);
-                    _paq.push(['rememberConsentGiven']);
-                    _paq.push(['setConsentGiven']);
-                    loadMatomoIfNotLoaded();
+                    consent = true;
+                    loadAnalyticsIfNotLoaded();
                 }
             },
         })});
 </script>
 
 <script>
-    let isMatomoLoaded = false;
+    let isAnalyticsLoaded = false;
 
-    function loadMatomoIfNotLoaded() {
-        if(!isMatomoLoaded) {
-            loadMatomo();
+    function loadAnalyticsIfNotLoaded() {
+        if(!isAnalyticsLoaded) {
+            loadAnalytics();
         }
     }
 
 
-    function loadMatomo() {
-        // require user consent before processing data
-        _paq.push(['requireConsent']);
-        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-            var u="//analytics.kevink.dev/";
-            _paq.push(['setTrackerUrl', u+'matomo.php']);
-            _paq.push(['setSiteId', '1']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-        })();
-        isMatomoLoaded = true;
+    function loadAnalytics() {
+        isAnalyticsLoaded = true;
     }
 </script>
 
