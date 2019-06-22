@@ -11,3 +11,6 @@ Author: Author
 logout: Ausloggen
 
 admin: Administration
+
+error404: Diese Seite konnte nicht gefunden werden.
+error404detail: Die angefragte Seite konnte nicht geladen werden. Bitte überprüfe die URL auf Schreibfehler oder kehre zur Startseite zurück.
