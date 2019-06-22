@@ -1,3 +1,5 @@
+let topBarNeededWidth;
+
 $(function() {
     spf.init();
     hljs.initHighlighting();
@@ -19,13 +21,15 @@ $(function() {
         if (lazyLoadInstance) {
             lazyLoadInstance.update();
         }
+        checkNavBarCollapse();
+
         NProgress.remove();
         hljs.initHighlighting.called = false;
         hljs.initHighlighting();
     });
 
 
-    var firstClick = true;
+    let firstClick = true;
     $(".has-dropdown > a").click(function(ev) {
         if(firstClick) {
             ev.preventDefault();
@@ -39,7 +43,55 @@ $(function() {
         elements_selector: ".lazy",
         use_native: true
     });
+
+    $("body").append("<div class=\"offscreenNavigation\"></div>");
+    topBarNeededWidth = 0;
+
+    $( ".topBarInner > *" ).each(function (index, el) {
+        if(!$(el).hasClass("flexSpacer")) topBarNeededWidth += $(el).width() + 15 * 2;
+        if(!$(el).hasClass("has-dropdown")) {
+            if(!$(el).hasClass("flexSpacer")) $(".offscreenNavigation").append("<a href=\""+$(el).attr('href')+"\" class='spf-link'>"+$(el).text()+"</a>");
+            else $(".offscreenNavigation").append("<div class=\"offscreenNavigationSpacer\"></div>");
+        }
+        else {
+            let elem = $(el);
+
+            $(".offscreenNavigation").append("<a href=\""+ elem.find("> a").attr('href')+"\" class='spf-link'>"+ elem.find("> a").text()+"</a>");
+
+
+            elem.find(".dropdown > a").each(function (index, childEl) {
+                $(".offscreenNavigation").append("<a href=\""+$(childEl).attr('href')+"\" class='spf-link'>&gt; "+$(childEl).text()+"</a>");
+            });
+        }
+    });
+
+    $(".offscreenNavigationSwitch").click(function() {
+        $("body").toggleClass("showOffscreenNavigation");
+    });
+
+    $(window).resize(function(ev) {
+        checkNavBarCollapse();
+    });
+
+    checkNavBarCollapse();
 });
+
+function checkNavBarCollapse() {
+    let width = $(window).width() * .9;
+
+    let collapseNavigation = topBarNeededWidth > width;
+
+    if(collapseNavigation) {
+        $(body).addClass("useOffscreenNavigation");
+    } else {
+        $(body).removeClass("useOffscreenNavigation");
+    }
+}
+
+
+function isOverflown(element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
 
 
 /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
