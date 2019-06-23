@@ -14,6 +14,12 @@ body, html {
     font-family: 'Anonymous Pro', monospace;
 }
 
+body {
+    background: white;
+    color: black;
+    transition: background .25s, color .25s;
+}
+
 .topBar {
     position: fixed;
     top: 0;
@@ -666,4 +672,96 @@ body.login .topBarInner *:not(#navBtnHome) {
 
 .offscreenNavigationSpacer {
     padding: 10px 15px;
+}
+
+.galleryList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.galleryCard {
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 15px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: calc(4 * 80px);
+    height: calc(3 * 80px);
+    -webkit-box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
+    box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
+    background-size: cover;
+    background-position: center;
+    background-color: black;
+}
+
+.galleryCardSmall {
+    width: calc(4 * 60px);
+    height: calc(3 * 60px);
+}
+
+.galleryCardMeta {
+    margin-top: auto;
+    background: linear-gradient(to top, black, transparent);
+    color: white;
+    padding: 20px 10px 10px;
+}
+
+.galleryCardTitle {
+    display: block;
+    font-size: 1.8em;
+}
+
+.photosModuleLoaded {
+    background: #1c1c1c;
+    color: white;
+}
+
+.photoList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.photoList:not(.imagesReady) > * {
+    transform: translate(-100000px, 0);
+}
+
+.photoList:not(.imagesReady)::before {
+    position: absolute;
+    content: 'Prepearing Images for you... (Requires JavaScript)';
+    display: block;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.photoList::after {
+    content: '';
+    flex-grow: 999999999;
+}
+
+.photoCard {
+    margin: 2px;
+    background-color: #101010;
+    cursor: pointer;
+    position: relative;
+}
+
+.photoCard .placeholder {
+    display: block;
+}
+
+.photoCard img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.photoCard:not(.processed) img {
+    width: auto;
+    height: auto;
 }

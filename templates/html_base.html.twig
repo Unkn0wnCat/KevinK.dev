@@ -38,22 +38,21 @@
 
     {% endblock %}
 
-
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    {#<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-KNGX3QF');
-    </script>
+    </script>#}
 
     <link rel="alternate" hreflang="en" href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "en"})) }}"/>
     <link rel="alternate" hreflang="de" href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "de"})) }}"/>
 </head>
 <body id="body" class="{% block bodyClasses %}{% endblock %}">
-<!-- Google Tag Manager (noscript) -->
+{#<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNGX3QF"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<!-- End Google Tag Manager (noscript) -->#}
 <div class="topBar">
     <nav class="topBarInner">
         <a id="navBtnHome" href="{{ path('index') }}" class="logo{% if module|default("") == "home" %} active{% endif %} spf-link">KevinK.dev</a>
@@ -79,6 +78,7 @@
                 <a href="{{ path("blogCategory", {"urlName": "general"}) }}" class="spf-link">{{ "general"|trans({}, "blog") }}</a>
             </div>
         </div>
+        <a href="javascript:void(0);" class="offscreenNavigationSwitch"><i class="fas fa-bars"></i></a>
     </nav>
 </div>
 <div id="content">
@@ -110,6 +110,9 @@
 <script name="kevin-main" src="{{ asset('assets/scripts/kevinMain.js') }}"></script>
 <script name="lazyLoader" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/12.0.0/lazyload.min.js"></script>
 
+{#
+
+TRACKING STUFF - DISABLED
 
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js" async></script>
@@ -192,7 +195,7 @@
         isAnalyticsLoaded = true;
     }
 </script>
-
+#}
 <script name="nprogress" src="{{ asset('assets/scripts/nprogress/nprogress.js') }}" async></script>
 <link rel="stylesheet" name="nprogress" href="{{ asset('assets/styles/nprogress/nprogress.css') }}">
 <script name="spfjs" src="{{ asset('assets/scripts/spfjs/spf.js') }}"></script>
