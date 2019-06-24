@@ -54,7 +54,7 @@
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->#}
 <div class="topBar">
-    <nav class="topBarInner">
+    <nav class="topBarInner" role="navigation" aria-label="{% trans %}ariaMainNavigation{% endtrans %}">
         <a id="navBtnHome" href="{{ path('index') }}" class="logo{% if module|default("") == "home" %} active{% endif %} spf-link">KevinK.dev</a>
         {% if app.user %}
             <div class="has-dropdown">
@@ -81,7 +81,7 @@
         <a href="javascript:void(0);" class="offscreenNavigationSwitch" aria-label="Open Menu"><i class="fas fa-bars"></i></a>
     </nav>
 </div>
-<div id="content">
+<div id="content" role="main">
     {% block content %}
         <section>
             <article>
@@ -91,7 +91,7 @@
     {% endblock %}
 </div>
 
-<footer>CC-BY 4.0 Kevin Kandlbinder, <a href="{{ path('impressum') }}" class="spf-link">{% trans from "modules" %}imprint{% endtrans %}</a> | <a href="{{ path('datenschutz') }}" class="spf-link">{% trans from "modules" %}datasec{% endtrans %}</a> | <a href="{{ path('disclaimer') }}" class="spf-link">{% trans from "modules" %}disclaimer{% endtrans %}</a> | <a href="#languageChooser">Language</a><span class="adminFooter">{# | <a href="{{ path('admin') }}" class="spf-link">Admin</a>#}</span></footer>
+<footer role="contentinfo">CC-BY 4.0 Kevin Kandlbinder, <a href="{{ path('impressum') }}" class="spf-link">{% trans from "modules" %}imprint{% endtrans %}</a> | <a href="{{ path('datenschutz') }}" class="spf-link">{% trans from "modules" %}datasec{% endtrans %}</a> | <a href="{{ path('disclaimer') }}" class="spf-link">{% trans from "modules" %}disclaimer{% endtrans %}</a> | <a href="#languageChooser">Language</a><span class="adminFooter">{# | <a href="{{ path('admin') }}" class="spf-link">Admin</a>#}</span></footer>
 
 
 <div class="languageModal" id="languageChooser">
