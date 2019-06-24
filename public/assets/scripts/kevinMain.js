@@ -23,6 +23,12 @@ $(function() {
         }
         checkNavBarCollapse();
 
+        if(typeof fitImages !== 'undefined' && jQuery.isFunction(fitImages)) {
+            fitImages();
+        } else {
+            window.fitImagesOnLoad = true;
+        }
+
         NProgress.remove();
         hljs.initHighlighting.called = false;
         hljs.initHighlighting();
@@ -41,13 +47,21 @@ $(function() {
 
     let lazyLoadInstance = new LazyLoad({
         elements_selector: ".lazy",
-        use_native: true
+        use_native: true,
+        callback_loaded: function () {
+            if(typeof fitImages !== 'undefined' && jQuery.isFunction(fitImages)) {
+                fitImages();
+            } else {
+                window.fitImagesOnLoad = true;
+            }
+        }
     });
 
     $("body").append("<div class=\"offscreenNavigation\"></div>");
     topBarNeededWidth = 0;
 
     $( ".topBarInner > *" ).each(function (index, el) {
+        if($(el).hasClass("offscreenNavigationSwitch")) return;
         if(!$(el).hasClass("flexSpacer")) topBarNeededWidth += $(el).width() + 15 * 2;
         if(!$(el).hasClass("has-dropdown")) {
             if(!$(el).hasClass("flexSpacer")) $(".offscreenNavigation").append("<a href=\""+$(el).attr('href')+"\" class='spf-link'>"+$(el).text()+"</a>");
@@ -74,6 +88,13 @@ $(function() {
     });
 
     checkNavBarCollapse();
+
+
+    if(typeof fitImages !== 'undefined' && jQuery.isFunction(fitImages)) {
+        fitImages();
+    } else {
+        window.fitImagesOnLoad = true;
+    }
 });
 
 function checkNavBarCollapse() {
