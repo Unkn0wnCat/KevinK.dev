@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans from "modules" %}photos{% endtrans %}{% endblock %}
+
+{% block bodyClasses %}{{ parent() }} photosModuleLoaded{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script name="kevin-photo-sorter" src="{{ asset('assets/scripts/kevinPhotoSorter.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="photosDetailSection">
+        <article>
+
+        </article>
+    </section>
+{% endblock %}

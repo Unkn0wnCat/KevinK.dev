@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans from "modules" %}photos{% endtrans %}{% endblock %}
+
+{% block bodyClasses %}{{ parent() }} photosModuleLoaded{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script name="kevin-photo-sorter" src="{{ asset('assets/scripts/kevinPhotoSorter.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="photosSection">
+        <article>
+            <h1>Gallery: GALLERY_NAME</h1>
+
+            <h2>Albums</h2>
+            <div class="galleryList">
+                <a href="{{ path('photoViewAlbum', {"galleryID": 0, "albumID": 0}) }}" class="galleryCard galleryCardSmall lazy spf-link" data-bg="url({{ asset('assets/images/mario-caruso-770233-unsplash.jpg') }})">
+                    <div class="galleryCardMeta">
+                        <span class="galleryCardTitle">My Album</span>
+                        <span class="galleryCardStats">140&nbsp;Photos</span>
+                    </div>
+                </a>
+            </div>
+
+            <h2>Photos</h2>
+            <div class="photoList">
+                <a class="photoCard spf-link" href="{{ path("photoView", {"galleryID": 0, "albumID": 0, "photoID": 0}) }}">
+                    <div class="placeholder"></div>
+                    <img data-src="https://placekitten.com/400/300" class="lazy">
+                </a>
+
+            </div>
+        </article>
+    </section>
+{% endblock %}

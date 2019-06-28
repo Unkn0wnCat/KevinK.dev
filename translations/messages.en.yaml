@@ -14,3 +14,5 @@ admin: Administration
 
 error404: This page could not be found.
 error404detail: The requested page could not be loaded. Please check the URL for misspellings or return to the homepage.
+
+ariaMainNavigation: Main navigation

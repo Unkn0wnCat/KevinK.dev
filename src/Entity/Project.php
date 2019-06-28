@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -70,6 +72,16 @@ class Project
      * @ORM\Column(type="boolean")
      */
     private $visible;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\PhotoAlbum", mappedBy="linkedProjects")
+     */
+    private $linkedPhotoAlbums;
+
+    public function __construct()
+    {
+        $this->linkedPhotoAlbums = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -211,6 +223,34 @@ class Project
     public function setVisible(bool $visible): self
     {
         $this->visible = $visible;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PhotoAlbum[]
+     */
+    public function getLinkedPhotoAlbums(): Collection
+    {
+        return $this->linkedPhotoAlbums;
+    }
+
+    public function addLinkedPhotoAlbum(PhotoAlbum $linkedPhotoAlbum): self
+    {
+        if (!$this->linkedPhotoAlbums->contains($linkedPhotoAlbum)) {
+            $this->linkedPhotoAlbums[] = $linkedPhotoAlbum;
+            $linkedPhotoAlbum->addLinkedProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLinkedPhotoAlbum(PhotoAlbum $linkedPhotoAlbum): self
+    {
+        if ($this->linkedPhotoAlbums->contains($linkedPhotoAlbum)) {
+            $this->linkedPhotoAlbums->removeElement($linkedPhotoAlbum);
+            $linkedPhotoAlbum->removeLinkedProject($this);
+        }
 
         return $this;
     }

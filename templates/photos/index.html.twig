@@ -1,20 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PhotosController!{% endblock %}
+{% block title %}{% trans from "modules" %}photos{% endtrans %}{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block bodyClasses %}{{ parent() }} photosModuleLoaded{% endblock %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% block content %}
+    <section class="photosSection">
+        <article>
+            <h1>{% trans from "modules" %}photos{% endtrans %}</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/! Projects/kevink-dev/kevink-dev-proj/src/Controller/PhotosController.php'|file_link(0) }}">src/Controller/PhotosController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/! Projects/kevink-dev/kevink-dev-proj/templates/photos/index.html.twig'|file_link(0) }}">templates/photos/index.html.twig</a></code></li>
-    </ul>
-</div>
+            <div class="galleryList">
+                <a href="{{ path('photoViewGallery', {"galleryID": 0}) }}" class="galleryCard lazy spf-link" data-bg="url({{ asset('assets/images/mario-caruso-770233-unsplash.jpg') }})">
+                    <div class="galleryCardMeta">
+                        <span class="galleryCardTitle">My Gallery</span>
+                        <span class="galleryCardStats">12&nbsp;Albums &middot; 140&nbsp;Photos</span>
+                    </div>
+                </a>
+            </div>
+        </article>
+    </section>
 {% endblock %}
