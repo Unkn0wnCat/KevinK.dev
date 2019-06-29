@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans from "photos" %}album{% endtrans %}: {{ album.title|decodeLocaleArray }}{% endblock %}
+
+{% block bodyClasses %}{{ parent() }} photosModuleLoaded{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script name="kevin-photo-sorter" src="{{ asset('assets/scripts/kevinPhotoSorter.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="photosSection">
+        <article>
+            <h1>{% trans from "photos" %}album{% endtrans %}: {{ album.title|decodeLocaleArray }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path("photoUploadToAlbum", { "albumID": album.id, "galleryID": gallery.id }) }}"><i class="fas fa-cloud-upload-alt"></i> Upload here</a>
+                {% endif %}
+            </h1>
+            {% if photos|length == 0 %}
+                <h3>{% trans from "photos" %}noPhotos{% endtrans %}</h3>
+            {% endif %}
+
+            {% include 'photos/components/photoList.html.twig' with { photos: photos, album: album, gallery: gallery } %}
+
+            <div class="pageButtons">
+                {% if page - 1 > 0 %}<a href="{{ path("blogPage", {"page": (page - 1)}) }}">&lt;</a>{% endif %}
+                <div class="flexSpacer">{{ "page %page%/%pageCount%"|trans({'%page%': page, '%pageCount%': maxPage}, "blog") }}</div>
+                {% if page + 1 < maxPage %}<a href="{{ path("blogPage", {"page": (page + 1)}) }}">&gt;</a>{% endif %}
+            </div>
+        </article>
+    </section>
+{% endblock %}

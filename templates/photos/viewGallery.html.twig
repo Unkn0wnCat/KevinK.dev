@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans from "photos" %}gallery{% endtrans %}: {{ gallery.title|decodeLocaleArray }}{% endblock %}
+
+{% block bodyClasses %}{{ parent() }} photosModuleLoaded{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script name="kevin-photo-sorter" src="{{ asset('assets/scripts/kevinPhotoSorter.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="photosSection">
+        <article>
+            <h1>{% trans from "photos" %}gallery{% endtrans %}: {{ gallery.title|decodeLocaleArray }}</h1>
+
+            <h2>{% trans from "photos" %}albums{% endtrans %}</h2>
+            <div class="galleryList">
+                {% if albums|length == 0 %}
+                    <h3>{% trans from "photos" %}noPhotos{% endtrans %}</h3>
+                {% endif %}
+                {% for album in albums %}
+                    {% include "photos/components/albumCard.html.twig" with { album: album, gallery: gallery } %}
+                {% endfor %}
+            </div>
+
+            {#<h2>Photos</h2>
+            <div class="photoList">
+                <a class="photoCard spf-link" href="{{ path("photoView", {"gallery": 0, "album": 0, "photo": 0}) }}">
+                    <div class="placeholder"></div>
+                    <img data-src="https://placekitten.com/400/300" class="lazy">
+                </a>
+
+            </div>#}
+        </article>
+    </section>
+{% endblock %}

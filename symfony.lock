@@ -92,6 +92,12 @@
     "jean85/pretty-package-versions": {
         "version": "1.2"
     },
+    "knplabs/gaufrette": {
+        "version": "v0.8.3"
+    },
+    "knplabs/knp-gaufrette-bundle": {
+        "version": "v0.6.1"
+    },
     "knplabs/knp-markdown-bundle": {
         "version": "1.7.1"
     },

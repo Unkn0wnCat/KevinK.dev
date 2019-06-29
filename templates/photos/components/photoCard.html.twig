@@ -1,0 +1,4 @@
+<a class="photoCard spf-link processed" href="{{ path("photoView", {"gallery": gallery.id, "album": album.id, "photo": photo.id}) }}" style="width: {{ photo.width*200/photo.height }}px; flex-grow: {{ photo.width*200/photo.height }}">
+    <div class="placeholder" style="padding-bottom: {{ photo.height/photo.width*100 }}%"></div>
+    <img data-src="{{ path('photoFileByIDScaled', {"photo": photo.id, "width": 1000}) }}" alt="{{ photo.title|default({"*": "Photo"})|decodeLocaleArray }}" class="lazy">
+</a>

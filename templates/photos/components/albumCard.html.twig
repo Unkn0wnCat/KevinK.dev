@@ -1,0 +1,6 @@
+<a href="{{ path('photoViewAlbum', {"gallery": gallery.id, "album": album.id}) }}" class="galleryCard galleryCardSmall lazy spf-link" data-bg="url({{ (album.coverImage) ? path("photoFileByIDScaled", { "photo": album.coverImage.id, "width": 240 }) : asset('assets/images/mario-caruso-770233-unsplash.jpg') }})">
+    <div class="galleryCardMeta">
+        <span class="galleryCardTitle">{{ album.title|decodeLocaleArray }}</span>
+        <span class="galleryCardStats">{{ album.photos|length }}&nbsp;Photos</span>
+    </div>
+</a>

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DonationController!{% endblock %}
+
+{% block body %}
+    <div id="paypal-button-container"></div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+    <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+    <script>
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                // Set up the transaction
+                return actions.order.create({
+                    intent: "CAPTURE",
+                    purchase_units: [{
+                        amount: {
+                            value: '100',
+                            description: "Donation to Kevin Kandlbinder"
+                        }
+                    }],
+                    application_context: {
+                        brand_name: "KevinK.dev",
+                        shipping_preference: "NO_SHIPPING",
+                        user_action: "PAY_NOW",
+
+                    }
+                });
+            },
+            onApprove: function(data, actions) {
+                // Capture the funds from the transaction
+                return actions.order.capture().then(function(details) {
+                    // Show a success message to your buyer
+                    alert("K, thx.");
+                    //alert('Transaction completed by ' + details.payer.name.given_name);
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+{% endblock %}

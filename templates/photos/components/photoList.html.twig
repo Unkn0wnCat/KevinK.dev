@@ -1,0 +1,5 @@
+<div class="photoList imagesReady">
+    {% for photo in photos %}
+        {% include "photos/components/photoCard.html.twig" with { photo: photo, album: album, gallery: gallery } %}
+    {% endfor %}
+</div>

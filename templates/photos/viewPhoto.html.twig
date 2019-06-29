@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans from "modules" %}photos{% endtrans %}{% endblock %}
+
+{% block bodyClasses %}{{ parent() }} photosModuleLoaded{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src='https://unpkg.com/panzoom@8.0.0/dist/panzoom.min.js'></script>
+    <script>
+        var element = document.querySelector('.PZBox');
+        var pzInst = panzoom(element, {
+            maxZoom: 10,
+            minZoom: 1
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="photosDetailSection">
+        <div class="PZContainer">
+            <img class="PZBox lazy" data-src="{{ path('photoFileByID', {"photo": photo.id}) }}" alt="{{ image.title|default({"*": "Image"})|decodeLocaleArray }}">
+        </div>
+    </div>
+{% endblock %}

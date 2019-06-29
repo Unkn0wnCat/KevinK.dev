@@ -1,0 +1,16 @@
+knp_gaufrette:
+  adapters:
+    photo_store:
+      safe_local:
+        directory: "%kernel.project_dir%/filesystem/photos"
+        create:    true
+    download_store:
+      local:
+        directory: "%kernel.project_dir%/filesystem/downloads"
+        create: true
+
+  filesystems:
+    photos:
+      adapter: photo_store
+    downloads:
+      adapter: download_store

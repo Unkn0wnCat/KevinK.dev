@@ -65,9 +65,15 @@ class BlogPost
      */
     private $visible;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\PhotoAlbum", mappedBy="linkedBlogPosts")
+     */
+    private $linkedPhotoAlbums;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->linkedPhotoAlbums = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -222,5 +228,33 @@ class BlogPost
         $text = preg_replace('/[^-\w]+/', '', $text);
 
         return $text;
+    }
+
+    /**
+     * @return Collection|PhotoAlbum[]
+     */
+    public function getLinkedPhotoAlbums(): Collection
+    {
+        return $this->linkedPhotoAlbums;
+    }
+
+    public function addLinkedPhotoAlbum(PhotoAlbum $linkedPhotoAlbum): self
+    {
+        if (!$this->linkedPhotoAlbums->contains($linkedPhotoAlbum)) {
+            $this->linkedPhotoAlbums[] = $linkedPhotoAlbum;
+            $linkedPhotoAlbum->addLinkedBlogPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLinkedPhotoAlbum(PhotoAlbum $linkedPhotoAlbum): self
+    {
+        if ($this->linkedPhotoAlbums->contains($linkedPhotoAlbum)) {
+            $this->linkedPhotoAlbums->removeElement($linkedPhotoAlbum);
+            $linkedPhotoAlbum->removeLinkedBlogPost($this);
+        }
+
+        return $this;
     }
 }
