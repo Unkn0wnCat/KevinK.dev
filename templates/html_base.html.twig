@@ -70,7 +70,7 @@
         {% endif %}
         <div class="flexSpacer"></div>
         <a id="navBtnProjects" href="{{ path('projects') }}" {% if module|default("") == "projects" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}projects{% endtrans %}</a>
-        {#<a id="navBtnPhotos" href="{{ path('photos') }}" {% if module|default("") == "photos" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}photos{% endtrans %}</a>#}
+        <a id="navBtnPhotos" href="{{ path('photos') }}" {% if module|default("") == "photos" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}photos{% endtrans %}</a>
         <div class="has-dropdown">
             <a id="navBtnBlog" href="{{ path('blogHome') }}" {% if module|default("") == "blog" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}blog{% endtrans %}</a>
             <div class="dropdown">

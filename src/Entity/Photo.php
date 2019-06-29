@@ -53,10 +53,36 @@ class Photo
      */
     private $photoGalleries;
 
-    public function __construct()
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $width;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $height;
+
+    /**
+     * Photo constructor.
+     * @param string $src
+     * @param \DateTime $timeStamp
+     * @param int $width
+     * @param int $height
+     * @param string $title
+     * @param string $description
+     */
+    public function __construct(string $src, \DateTime $timeStamp, int $width, int $height, $title = "", $description = "")
     {
         $this->photoAlbums = new ArrayCollection();
         $this->photoGalleries = new ArrayCollection();
+        $this->src = $src;
+        $this->captureTimestamp = $timeStamp;
+        $this->width = $width;
+        $this->height = $height;
+
+        if($title != "") $this->title = $title;
+        if($description != "") $this->description = $description;
     }
 
     public function getId(): ?int
@@ -176,6 +202,30 @@ class Photo
             $this->photoGalleries->removeElement($photoGallery);
             $photoGallery->removePhoto($this);
         }
+
+        return $this;
+    }
+
+    public function getWidth(): ?int
+    {
+        return $this->width;
+    }
+
+    public function setWidth(int $width): self
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    public function getHeight(): ?int
+    {
+        return $this->height;
+    }
+
+    public function setHeight(int $height): self
+    {
+        $this->height = $height;
 
         return $this;
     }

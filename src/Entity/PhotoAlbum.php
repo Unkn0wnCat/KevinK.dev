@@ -53,6 +53,11 @@ class PhotoAlbum
      */
     private $photoGalleries;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Photo")
+     */
+    private $CoverImage;
+
     public function __construct()
     {
         $this->linkedProjects = new ArrayCollection();
@@ -204,6 +209,18 @@ class PhotoAlbum
             $this->photoGalleries->removeElement($photoGallery);
             $photoGallery->removeAlbum($this);
         }
+
+        return $this;
+    }
+
+    public function getCoverImage(): ?Photo
+    {
+        return $this->CoverImage;
+    }
+
+    public function setCoverImage(?Photo $CoverImage): self
+    {
+        $this->CoverImage = $CoverImage;
 
         return $this;
     }

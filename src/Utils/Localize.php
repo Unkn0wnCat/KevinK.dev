@@ -24,6 +24,10 @@ class Localize {
      */
     public function getLocalizedString(array $content, string $locale, string $fallback = "Untitled") : string
     {
+        if(array_key_exists("*", $content)) {
+            return $content["*"];
+        }
+
         return array_key_exists(
             $locale,
             $content) ?

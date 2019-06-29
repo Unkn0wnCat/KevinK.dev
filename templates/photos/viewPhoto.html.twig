@@ -6,13 +6,20 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script name="kevin-photo-sorter" src="{{ asset('assets/scripts/kevinPhotoSorter.js') }}"></script>
+    <script src='https://unpkg.com/panzoom@8.0.0/dist/panzoom.min.js'></script>
+    <script>
+        var element = document.querySelector('.PZBox');
+        var pzInst = panzoom(element, {
+            maxZoom: 10,
+            minZoom: 1
+        });
+    </script>
 {% endblock %}
 
 {% block content %}
-    <section class="photosDetailSection">
-        <article>
-
-        </article>
-    </section>
+    <div class="photosDetailSection">
+        <div class="PZContainer">
+            <img class="PZBox lazy" data-src="{{ path('photoFileByID', {"photo": photo.id}) }}" alt="{{ image.title|default({"*": "Image"})|decodeLocaleArray }}">
+        </div>
+    </div>
 {% endblock %}

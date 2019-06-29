@@ -38,10 +38,10 @@ class TestGaufretteCommand extends Command
         $photofs = $this->container->get('knp_gaufrette.filesystem_map')->get('photos');
         $downloadfs = $this->container->get('knp_gaufrette.filesystem_map')->get('downloads');
 
-        $wrapper = StreamWrapper::getFilesystemMap();
+        /*$wrapper = StreamWrapper::getFilesystemMap();
         $wrapper->set('photos', $photofs);
         $wrapper->set('downloads', $downloadfs);
-        StreamWrapper::register();
+        StreamWrapper::register();*/
 
         /*foreach ($photofs->listKeys()['keys'] as $photo)
         {
@@ -51,7 +51,7 @@ class TestGaufretteCommand extends Command
 
 
         }*/
-        dump($downloadfs->listKeys());
+        dump($photofs->listKeys());
 
         $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
     }

@@ -29,16 +29,6 @@ class PhotoGallery
     private $description;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $directlyShowPhotos;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Photo", inversedBy="photoGalleries")
-     */
-    private $photos;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\PhotoAlbum", inversedBy="photoGalleries")
      */
     private $albums;
@@ -48,9 +38,13 @@ class PhotoGallery
      */
     private $listed;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Photo")
+     */
+    private $CoverImage;
+
     public function __construct()
     {
-        $this->photos = new ArrayCollection();
         $this->albums = new ArrayCollection();
     }
 
@@ -79,44 +73,6 @@ class PhotoGallery
     public function setDescription($description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getDirectlyShowPhotos(): ?bool
-    {
-        return $this->directlyShowPhotos;
-    }
-
-    public function setDirectlyShowPhotos(bool $directlyShowPhotos): self
-    {
-        $this->directlyShowPhotos = $directlyShowPhotos;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Photo[]
-     */
-    public function getPhotos(): Collection
-    {
-        return $this->photos;
-    }
-
-    public function addPhoto(Photo $photo): self
-    {
-        if (!$this->photos->contains($photo)) {
-            $this->photos[] = $photo;
-        }
-
-        return $this;
-    }
-
-    public function removePhoto(Photo $photo): self
-    {
-        if ($this->photos->contains($photo)) {
-            $this->photos->removeElement($photo);
-        }
 
         return $this;
     }
@@ -155,6 +111,18 @@ class PhotoGallery
     public function setListed(bool $listed): self
     {
         $this->listed = $listed;
+
+        return $this;
+    }
+
+    public function getCoverImage(): ?Photo
+    {
+        return $this->CoverImage;
+    }
+
+    public function setCoverImage(?Photo $CoverImage): self
+    {
+        $this->CoverImage = $CoverImage;
 
         return $this;
     }

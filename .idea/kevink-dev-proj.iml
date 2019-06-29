@@ -121,5 +121,7 @@
     <orderEntry type="library" name="lazyload" level="application" />
     <orderEntry type="library" name="cookieconsent" level="application" />
     <orderEntry type="library" name="wb404" level="application" />
+    <orderEntry type="library" name="dropzone" level="application" />
+    <orderEntry type="library" name="panzoom" level="application" />
   </component>
 </module>

@@ -29,7 +29,8 @@
         "symfony/validator": "4.2.*",
         "symfony/web-link": "4.2.*",
         "symfony/yaml": "4.2.*",
-      "ext-exif": "*"
+      "ext-exif": "*",
+      "ext-gd": "*"
     },
     "require-dev": {
         "symfony/debug-pack": "*",

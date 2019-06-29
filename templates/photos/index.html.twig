@@ -10,12 +10,9 @@
             <h1>{% trans from "modules" %}photos{% endtrans %}</h1>
 
             <div class="galleryList">
-                <a href="{{ path('photoViewGallery', {"galleryID": 0}) }}" class="galleryCard lazy spf-link" data-bg="url({{ asset('assets/images/mario-caruso-770233-unsplash.jpg') }})">
-                    <div class="galleryCardMeta">
-                        <span class="galleryCardTitle">My Gallery</span>
-                        <span class="galleryCardStats">12&nbsp;Albums &middot; 140&nbsp;Photos</span>
-                    </div>
-                </a>
+                {% for gallery in galleries %}
+                    {% include "photos/components/galleryCard.html.twig" with { gallery: gallery }  %}
+                {% endfor %}
             </div>
         </article>
     </section>
