@@ -12,13 +12,22 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class DonationController extends AbstractController
 {
-    /*/**
+    /**
      * @Route("/donate", name="donation")
-     *\/
-    public function index()
+     */
+    public function donate()
     {
-        return $this->render('donation/index.html.twig', [
-            'controller_name' => 'DonationController',
+        return $this->render('donation/donate.html.twig', [
+            'module' => 'donation',
         ]);
-    }*/
+    }
+    /**
+     * @Route("/donate/thank-you", name="donationThanks")
+     */
+    public function donationThanks()
+    {
+        return $this->render('donation/donationComplete.html.twig', [
+            'module' => 'donation',
+        ]);
+    }
 }

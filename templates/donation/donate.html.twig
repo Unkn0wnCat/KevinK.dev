@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{% trans from "payments" %}donateToMe{% endtrans %}</h1>
+    <p>{% trans from "payments" %}donateToMeText{% endtrans %}</p>
+
+    <a class="button donateButton" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=kevin@1in9.net&item_name=KevinK.dev&currency_code=EUR&image_url=https%3A%2F%2Fkevink.dev%2Fassets%2Fimages%2Flogo%2Froundedbglogo%402x.png&return=https%3A%2F%2Fkevink.dev%2Fpayments%2Fdonate%2Fthank-you&rm=1&cancel_return=https%3A%2F%2Fkevink.dev%2Fpayments%2Fdonate" rel="noopener"><span>{% trans from "payments" %}donatePayPal{% endtrans %}</span><i class="fas fa-fw fa-chevron-right"></i></a>
+{% endblock %}
+
+{% block title %}{% trans from "payments" %}donate{% endtrans %}{% endblock %}
+
