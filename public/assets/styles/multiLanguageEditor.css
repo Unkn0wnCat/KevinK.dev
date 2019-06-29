@@ -1,0 +1,83 @@
+.multiLanguageEditorSource {
+    display: none;
+}
+
+.multiLanguageEditorInline {
+    display: flex;
+    width: 100%;
+    background: white;
+    border: thin solid black;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 15px 0;
+    line-height: 30px;
+}
+
+.multiLanguageEditorInline input, .multiLanguageEditorInline textarea {
+    border: none !important;
+    border-right: thin solid black !important;
+
+    margin: 0 !important;
+    border-radius: 0 !important;
+
+    padding: 0 10px !important;
+    flex-grow: 1;
+}
+
+.multiLanguageSwitcherTrigger {
+    padding: 0 10px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.multiLanguageSwitcher {
+    position: absolute;
+    background: white;
+    border: thin solid black;
+    border-radius: 5px;
+    transform: translate(5px, 25px);
+    display: flex;
+    flex-direction: column;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.multiLanguageSwitcher.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.multiLanguageSwitcher {
+    display: flex;
+    flex-direction: column;
+}
+
+.multiLanguageSwitcher div > span {
+    padding: 0 10px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.multiLanguageChooserBox > span {
+    display: flex;
+}
+
+.multiLanguageChooserBox > span > span:first-child {
+    flex-grow: 1;
+    padding-right: 20px;
+}
+
+.multiLanguageSwitcher .active {
+    background: rgba(0, 255, 0, .2);
+}
+
+.multiLanguageSwitcher .inactive {
+    opacity: .5;
+}

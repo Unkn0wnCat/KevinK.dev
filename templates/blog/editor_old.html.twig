@@ -1,0 +1,241 @@
+{% extends 'base.html.twig' %}
+
+{% if post.category %}
+    {% set categoryName = post.category.languageKey|trans({}, "blog") %}
+{% else %}
+    {% set categoryName = "chooseCategory"|trans({}, "blog") %}
+{% endif %}
+
+{% block title %}Editor loading...{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("assets/styles/editormd/editormd.min.css") }}" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+
+    <script src="{{ asset('assets/scripts/editormd/editormd.js') }}"></script>
+    <script src="{{ asset('assets/scripts/editormd/languages/en.js') }}"></script>
+
+    <script type="text/javascript">
+        var contentEditor;
+
+        function initEditor(md){
+            contentEditor = editormd("editor", {
+                width: "100%",
+                height: 500,
+                path : '{{ asset("assets/scripts/editormd/lib/") }}',
+                theme : "dark",
+                previewTheme : "light",
+                editorTheme : "pastel-on-dark",
+                markdown : md,
+                codeFold : true,
+                //syncScrolling : false,
+                saveHTMLToTextarea : true,
+                searchReplace : true,
+                //watch : false,
+                htmlDecode : "style,script,iframe|on*",
+                //toolbar  : false,
+                //previewCodeHighlight : false,
+                emoji : true,
+                taskList : true,
+                tocm            : true,
+                tex : true,
+                flowChart : true,
+                sequenceDiagram : true,
+                //dialogLockScreen : false,
+                //dialogShowMask : false,
+                //dialogDraggable : false,
+                //dialogMaskOpacity : 0.4,
+                //dialogMaskBgColor : "#000",
+                imageUpload : true,
+                imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                imageUploadURL : "./php/upload.php",
+                onload : function() {
+                    console.log('onload', this);
+                    //this.fullscreen();
+                    //this.unwatch();
+                    //this.watch().fullscreen();
+
+                    //this.setMarkdown("#PHP");
+                    //this.width("100%");
+                    //this.height(480);
+                    //this.resize("100%", 640);
+                    switchLang($("#languageSwitch").val());
+                },
+                onchange : contentChange
+            });
+        }
+
+        var currentLang = "en";
+
+        var contents = {{ post.content|json_encode()|raw }};
+        var summaries = {{ post.summary|json_encode()|raw }};
+        var titles = {{ post.title|json_encode()|raw }};
+
+        if(contents == null) {
+            contents = {};
+        } else {
+            contents = JSON.parse(contents);
+        }
+        if(summaries == null) {
+            summaries = {};
+        } else {
+            summaries = JSON.parse(summaries);
+        }
+        if(titles == null) {
+            titles = {};
+        } else {
+            titles = JSON.parse(titles);
+        }
+
+        function contentChange() {
+            contents[currentLang] = contentEditor.getMarkdown();
+            summaries[currentLang] = $("#summary").val();
+            titles[currentLang] = $("#title").text();
+
+            document.title = "Editor: "+titles[currentLang]+" | KevinK.dev";
+
+            $("#edit_post_title").val(JSON.stringify(titles));
+            $("#edit_post_summary").val(JSON.stringify(summaries));
+            $("#edit_post_content").val(JSON.stringify(contents));
+        }
+
+        function switchLang(newLang) {
+            var md = "Write here!";
+            if(typeof contents[newLang] !== "undefined") {
+                md = contents[newLang];
+            }
+
+            var summary = "Write here!";
+            if(typeof summaries[newLang] !== "undefined") {
+                summary = summaries[newLang];
+            }
+
+            var title = "Write here!";
+            if(typeof titles[newLang] !== "undefined") {
+                title = titles[newLang];
+            }
+
+            document.title = "Editor: "+title+" | KevinK.dev";
+
+            contentEditor.setMarkdown(md);
+            $("#summary").val(summary);
+            $("#title").text(title);
+
+            currentLang = newLang;
+        }
+
+        $(function() {
+
+            initEditor($("#editor").text());
+
+            $("#goto-line-btn").bind("click", function(){
+                contentEditor.gotoLine(90);
+            });
+
+            $("#show-btn").bind('click', function(){
+                contentEditor.show();
+            });
+
+            $("#hide-btn").bind('click', function(){
+                contentEditor.hide();
+            });
+
+            $("#get-md-btn").bind('click', function(){
+                alert(contentEditor.getMarkdown());
+            });
+
+            $("#get-html-btn").bind('click', function() {
+                alert(contentEditor.getHTML());
+            });
+
+            $("#watch-btn").bind('click', function() {
+                contentEditor.watch();
+            });
+
+            $("#unwatch-btn").bind('click', function() {
+                contentEditor.unwatch();
+            });
+
+            $("#preview-btn").bind('click', function() {
+                contentEditor.previewing();
+            });
+
+            $("#fullscreen-btn").bind('click', function() {
+                contentEditor.fullscreen();
+            });
+
+            $("#show-toolbar-btn").bind('click', function() {
+                contentEditor.showToolbar();
+            });
+
+            $("#close-toolbar-btn").bind('click', function() {
+                contentEditor.hideToolbar();
+            });
+
+            $("#toc-menu-btn").click(function(){
+                contentEditor.config({
+                    tocDropdown   : true,
+                    tocTitle      : "TOC",
+                });
+            });
+
+            $("#toc-default-btn").click(function() {
+                contentEditor.config("tocDropdown", false);
+            });
+
+            $("#summary").change(contentChange);
+
+            $("#title").keyup(contentChange);
+
+            $("#languageSwitch").change(function () {
+                switchLang($("#languageSwitch").val());
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <section class="postContent postEditor">
+        <article>
+            <div class="headerBackground" style="background-image: url({{ post.image|default(asset("assets/images/mario-caruso-770233-unsplash.jpg")) }})"></div>
+            <header>
+                <div class="headerInner">
+                    <h1 contenteditable="true" id="title">Loading...</h1>
+                    <span class="postMeta">{{ "by %author% on %publishdate% in %categorylink%"|trans({'%author%': post.author.publicName, '%publishdate%': "XX.XX.XXXX", '%categorylink%': categoryName}, "blog")|raw }}</span>
+                </div>
+            </header>
+            <div class="headerPlaceholder"></div>
+
+            <select id="languageSwitch">
+                <option value="en" selected>English</option>
+                <option value="de">Deutsch</option>
+            </select>
+
+            <div class="contentEditor" id="editor">Editor loading...</div>
+
+            <div class="contentSummary">
+                <h1>Summary</h1>
+                <textarea id="summary" style="width: 100%"></textarea>
+            </div>
+
+            <h1>Meta</h1>
+
+            {{ form_start(form) }}
+                {{ form_row(form.publishTime) }}
+                {{ form_row(form.image) }}
+                {{ form_row(form.author) }}
+                {{ form_row(form.tags) }}
+                {{ form_row(form.category) }}
+                {{ form_row(form.visible) }}
+
+                <button class="btn">{% trans %}save{% endtrans %}</button>
+            {{ form_end(form) }}
+        </article>
+
+    </section>
+{% endblock %}
