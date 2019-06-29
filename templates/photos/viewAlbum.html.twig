@@ -26,7 +26,7 @@
             <div class="pageButtons">
                 {% if page - 1 > 0 %}<a href="{{ path("photoViewAlbumPaged", {"gallery": gallery.id, "album": album.id,"page": (page - 1)}) }}">&lt;</a>{% endif %}
                 <div class="flexSpacer">{{ "page %page%/%pageCount%"|trans({'%page%': page, '%pageCount%': maxPage}, "blog") }}</div>
-                {% if page + 1 < maxPage %}<a href="{{ path("photoViewAlbumPaged", {"gallery": gallery.id, "album": album.id,"page": (page + 1)}) }}">&gt;</a>{% endif %}
+                {% if page + 1 <= maxPage %}<a href="{{ path("photoViewAlbumPaged", {"gallery": gallery.id, "album": album.id,"page": (page + 1)}) }}">&gt;</a>{% endif %}
             </div>
         </article>
     </section>
