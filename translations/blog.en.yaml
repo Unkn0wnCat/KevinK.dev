@@ -1,7 +1,7 @@
 blogHomeText: Welcome to my blog, the place where I will dump my thoughts and experiences in an hopefolly entertaining way.
 noPosts: Kein Inhalt verfügbar...
 read more: Read more
-"page %page%/%pageCount%": Page %page% of %page%
+"page %page%/%pageCount%": Page %page% of %pageCount%
 "by %author% on %publishdate% in %categorylink%": by %author% on %publishdate% in %categorylink%
 category: Category
 
