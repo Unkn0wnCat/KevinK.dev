@@ -10,6 +10,9 @@
             <h1>{% trans from "modules" %}photos{% endtrans %}</h1>
 
             <div class="galleryList">
+                {% if galleries|length == 0 %}
+                    <h3>{% trans from "photos" %}noPhotos{% endtrans %}</h3>
+                {% endif %}
                 {% for gallery in galleries %}
                     {% include "photos/components/galleryCard.html.twig" with { gallery: gallery }  %}
                 {% endfor %}
