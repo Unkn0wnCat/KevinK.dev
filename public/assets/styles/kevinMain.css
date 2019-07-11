@@ -158,13 +158,6 @@ article a {
     text-decoration-skip: none;
 }
 
-.photosModuleLoaded article a {
-    color: #5d7fec;
-    text-decoration: underline dotted currentColor;
-    text-decoration-skip: none;
-}
-
-
 .recentsSection {
     background: #060606;
     color: white;
