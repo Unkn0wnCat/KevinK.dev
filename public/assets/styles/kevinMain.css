@@ -614,8 +614,8 @@ footer a {
     display: flex;
 }
 
-.projectCardCTAContainer > :nth-child(1) {
-    border-right: thin solid rgba(255, 255, 255, .5);
+.projectCardCTA:nth-child(2) {
+    border-left: thin solid rgba(255, 255, 255, .5);
 }
 
 .projectCardCTAContainer > * {
