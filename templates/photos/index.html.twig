@@ -10,9 +10,12 @@
             <h1>{% trans from "modules" %}photos{% endtrans %}</h1>
 
             <div class="galleryList">
-                {% if galleries|length == 0 %}
-                    <h3>{% trans from "photos" %}noPhotos{% endtrans %}</h3>
-                {% endif %}
+                <a href="https://unsplash.com/@unkn0wncat" target="_blank" rel="noopener" class="galleryCard lazy spf-link" data-bg="url(https://source.unsplash.com/user/unkn0wncat/320x240)">
+                    <div class="galleryCardMeta">
+                        <span class="galleryCardTitle">Unsplash</span>
+                        <span class="galleryCardStats">{% trans from "photos" %}unsplashTeaser{% endtrans %}</span>
+                    </div>
+                </a>
                 {% for gallery in galleries %}
                     {% include "photos/components/galleryCard.html.twig" with { gallery: gallery }  %}
                 {% endfor %}
