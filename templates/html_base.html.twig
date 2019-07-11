@@ -48,159 +48,159 @@
     <link rel="alternate" hreflang="de" href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "de"})) }}"/>
 </head>
 <body id="body" class="{% block bodyClasses %}{% endblock %}">
-{#<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNGX3QF"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->#}
-<div class="topBar">
-    <nav class="topBarInner" role="navigation" aria-label="{% trans %}ariaMainNavigation{% endtrans %}">
-        <a id="navBtnHome" href="{{ path('index') }}" class="logo{% if module|default("") == "home" %} active{% endif %} spf-link">KevinK.dev</a>
-        {% if app.user %}
-            <div class="has-dropdown">
-                <a id="navBtnAccount" href="javascript:void(0);">{{ app.user }}</a>
+    {#<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNGX3QF"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->#}
+    <div class="topBar">
+        <nav class="topBarInner" role="navigation" aria-label="{% trans %}ariaMainNavigation{% endtrans %}">
+            <a id="navBtnHome" href="{{ path('index') }}" class="logo{% if module|default("") == "home" %} active{% endif %} spf-link">KevinK.dev</a>
+            {% if app.user %}
+                <div class="has-dropdown">
+                    <a id="navBtnAccount" href="javascript:void(0);">{{ app.user }}</a>
 
-                <div class="dropdown" style="transform: translate(calc(-50% + 95px), 0);">
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <a href="#{#TODO: Admin Login#}">{% trans %}admin{% endtrans %}</a>
-                    {% endif %}
-                    <a href="{{ path('logout') }}">{% trans %}logout{% endtrans %}</a>
+                    <div class="dropdown" style="transform: translate(calc(-50% + 95px), 0);">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="#{#TODO: Admin Login#}">{% trans %}admin{% endtrans %}</a>
+                        {% endif %}
+                        <a href="{{ path('logout') }}">{% trans %}logout{% endtrans %}</a>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="flexSpacer"></div>
+            <a id="navBtnProjects" href="{{ path('projects') }}" {% if module|default("") == "projects" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}projects{% endtrans %}</a>
+            <a id="navBtnPhotos" href="{{ path('photos') }}" {% if module|default("") == "photos" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}photos{% endtrans %}</a>
+            <div class="has-dropdown">
+                <a id="navBtnBlog" href="{{ path('blogHome') }}" {% if module|default("") == "blog" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}blog{% endtrans %}</a>
+                <div class="dropdown">
+                    <a href="{{ path("blogHome") }}" class="spf-link">Home</a>
+                    <a href="{{ path("blogCategory", {"urlName": "general"}) }}" class="spf-link">{{ "general"|trans({}, "blog") }}</a>
                 </div>
             </div>
-        {% endif %}
-        <div class="flexSpacer"></div>
-        <a id="navBtnProjects" href="{{ path('projects') }}" {% if module|default("") == "projects" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}projects{% endtrans %}</a>
-        <a id="navBtnPhotos" href="{{ path('photos') }}" {% if module|default("") == "photos" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}photos{% endtrans %}</a>
-        <div class="has-dropdown">
-            <a id="navBtnBlog" href="{{ path('blogHome') }}" {% if module|default("") == "blog" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}blog{% endtrans %}</a>
-            <div class="dropdown">
-                <a href="{{ path("blogHome") }}" class="spf-link">Home</a>
-                <a href="{{ path("blogCategory", {"urlName": "general"}) }}" class="spf-link">{{ "general"|trans({}, "blog") }}</a>
-            </div>
-        </div>
-        <a href="javascript:void(0);" class="offscreenNavigationSwitch" aria-label="Open Menu"><i class="fas fa-bars"></i></a>
-    </nav>
-</div>
-<div id="content" role="main">
-    {% block content %}
-        <section>
-            <article>
-                {% block body %}{% endblock %}
-            </article>
-        </section>
-    {% endblock %}
-</div>
+            <a href="javascript:void(0);" class="offscreenNavigationSwitch" aria-label="Open Menu"><i class="fas fa-bars"></i></a>
+        </nav>
+    </div>
+    <div id="content" role="main">
+        {% block content %}
+            <section>
+                <article>
+                    {% block body %}{% endblock %}
+                </article>
+            </section>
+        {% endblock %}
+    </div>
 
-<footer role="contentinfo">CC-BY 4.0 Kevin Kandlbinder, <a href="{{ path('impressum') }}" class="spf-link">{% trans from "modules" %}imprint{% endtrans %}</a> | <a href="{{ path('datenschutz') }}" class="spf-link">{% trans from "modules" %}datasec{% endtrans %}</a> | <a href="{{ path('disclaimer') }}" class="spf-link">{% trans from "modules" %}disclaimer{% endtrans %}</a> | <a href="#languageChooser">Language</a><span class="adminFooter">{# | <a href="{{ path('admin') }}" class="spf-link">Admin</a>#}</span></footer>
+    <footer role="contentinfo">CC-BY 4.0 Kevin Kandlbinder, <a href="{{ path('impressum') }}" class="spf-link">{% trans from "modules" %}imprint{% endtrans %}</a> | <a href="{{ path('datenschutz') }}" class="spf-link">{% trans from "modules" %}datasec{% endtrans %}</a> | <a href="{{ path('disclaimer') }}" class="spf-link">{% trans from "modules" %}disclaimer{% endtrans %}</a> | <a href="#languageChooser">Language</a><span class="adminFooter">{# | <a href="{{ path('admin') }}" class="spf-link">Admin</a>#}</span></footer>
 
 
-<div class="languageModal" id="languageChooser">
-    {% include "languageSwitcher.html.twig" %}
-</div>
+    <div class="languageModal" id="languageChooser">
+        {% include "languageSwitcher.html.twig" %}
+    </div>
 
-<link name="google-fonts" rel="preload" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Roboto&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link name="google-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Roboto&display=swap"></noscript>
+    <link name="google-fonts" rel="preload" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Roboto&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link name="google-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Roboto&display=swap"></noscript>
 
-<link name="fontawesome" rel="preload" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
-<noscript><link name="fontawesome" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous"></noscript>
+    <link name="fontawesome" rel="preload" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
+    <noscript><link name="fontawesome" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous"></noscript>
 
 
 
-<script name="jquery" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script name="kevin-main" src="{{ asset('assets/scripts/kevinMain.js') }}"></script>
-<script name="lazyLoader" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/12.0.0/lazyload.min.js"></script>
+    <script name="jquery" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script name="kevin-main" src="{{ asset('assets/scripts/kevinMain.js') }}"></script>
+    <script name="lazyLoader" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/12.0.0/lazyload.min.js"></script>
 
-{#
+    {#
 
-TRACKING STUFF - DISABLED
+    TRACKING STUFF - DISABLED
 
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js" async></script>
-<script>
-    var _paq = _paq || [];
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js" async></script>
+    <script>
+        var _paq = _paq || [];
 
-    let consent;
+        let consent;
 
 
-    window.addEventListener("load", function(){
-        window.cookieconsent.initialise({
-            "palette": {
-                "popup": {
-                    "background": "#252e39"
+        window.addEventListener("load", function(){
+            window.cookieconsent.initialise({
+                "palette": {
+                    "popup": {
+                        "background": "#252e39"
+                    },
+                    "button": {
+                        "background": "#4257ec"
+                    }
                 },
-                "button": {
-                    "background": "#4257ec"
-                }
-            },
-            "theme": "edgeless",
-            "position": "bottom-right",
-            "type": "opt-out",
-            "content": {
-                "message": "{% trans from "trackcon" %}consentText{% endtrans %}",
-                "allow": "{% trans from "trackcon" %}allow{% endtrans %}",
-                "dismiss": "{% trans from "trackcon" %}hide{% endtrans %}",
-                "deny": "{% trans from "trackcon" %}deny{% endtrans %}",
-                "link": "{% trans from "modules" %}datasec{% endtrans %}",
-                "href": '{{ path('datenschutz') }}'
-            },
-            "revokable": false,
-            onInitialise: function (status) {
-                var type = this.options.type;
-                var didConsent = this.hasConsented();
-                if (type == 'opt-in' && didConsent) {
-                    consent = true;
-                    loadAnalyticsIfNotLoaded();
-                }
-                if (type == 'opt-out' && !didConsent) {
-                    consent = false;
-                }
-            },
+                "theme": "edgeless",
+                "position": "bottom-right",
+                "type": "opt-out",
+                "content": {
+                    "message": "{% trans from "trackcon" %}consentText{% endtrans %}",
+                    "allow": "{% trans from "trackcon" %}allow{% endtrans %}",
+                    "dismiss": "{% trans from "trackcon" %}hide{% endtrans %}",
+                    "deny": "{% trans from "trackcon" %}deny{% endtrans %}",
+                    "link": "{% trans from "modules" %}datasec{% endtrans %}",
+                    "href": '{{ path('datenschutz') }}'
+                },
+                "revokable": false,
+                onInitialise: function (status) {
+                    var type = this.options.type;
+                    var didConsent = this.hasConsented();
+                    if (type == 'opt-in' && didConsent) {
+                        consent = true;
+                        loadAnalyticsIfNotLoaded();
+                    }
+                    if (type == 'opt-out' && !didConsent) {
+                        consent = false;
+                    }
+                },
 
-            onStatusChange: function(status, chosenBefore) {
-                var type = this.options.type;
-                var didConsent = this.hasConsented();
-                if (type == 'opt-in' && didConsent) {
-                    consent = true;
-                    loadAnalyticsIfNotLoaded();
-                }
-                if (type == 'opt-out' && !didConsent) {
-                    consent = false;
-                }
-            },
+                onStatusChange: function(status, chosenBefore) {
+                    var type = this.options.type;
+                    var didConsent = this.hasConsented();
+                    if (type == 'opt-in' && didConsent) {
+                        consent = true;
+                        loadAnalyticsIfNotLoaded();
+                    }
+                    if (type == 'opt-out' && !didConsent) {
+                        consent = false;
+                    }
+                },
 
-            onRevokeChoice: function() {
-                var type = this.options.type;
-                if (type == 'opt-in') {
-                    consent = false;
-                }
-                if (type == 'opt-out') {
-                    consent = true;
-                    loadAnalyticsIfNotLoaded();
-                }
-            },
-        })});
-</script>
+                onRevokeChoice: function() {
+                    var type = this.options.type;
+                    if (type == 'opt-in') {
+                        consent = false;
+                    }
+                    if (type == 'opt-out') {
+                        consent = true;
+                        loadAnalyticsIfNotLoaded();
+                    }
+                },
+            })});
+    </script>
 
-<script>
-    let isAnalyticsLoaded = false;
+    <script>
+        let isAnalyticsLoaded = false;
 
-    function loadAnalyticsIfNotLoaded() {
-        if(!isAnalyticsLoaded) {
-            loadAnalytics();
+        function loadAnalyticsIfNotLoaded() {
+            if(!isAnalyticsLoaded) {
+                loadAnalytics();
+            }
         }
-    }
 
 
-    function loadAnalytics() {
-        isAnalyticsLoaded = true;
-    }
-</script>
-#}
-<script name="nprogress" src="{{ asset('assets/scripts/nprogress/nprogress.js') }}" async></script>
-<link rel="stylesheet" name="nprogress" href="{{ asset('assets/styles/nprogress/nprogress.css') }}">
-<script name="spfjs" src="{{ asset('assets/scripts/spfjs/spf.js') }}"></script>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/hybrid.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+        function loadAnalytics() {
+            isAnalyticsLoaded = true;
+        }
+    </script>
+    #}
+    <script name="nprogress" src="{{ asset('assets/scripts/nprogress/nprogress.js') }}" async></script>
+    <link rel="stylesheet" name="nprogress" href="{{ asset('assets/styles/nprogress/nprogress.css') }}">
+    <script name="spfjs" src="{{ asset('assets/scripts/spfjs/spf.js') }}"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/hybrid.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 
-{% block javascripts %}{% endblock %}
+    {% block javascripts %}{% endblock %}
 </body>
 </html>

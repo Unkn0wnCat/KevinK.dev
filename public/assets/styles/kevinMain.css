@@ -18,6 +18,8 @@ body {
     background: white;
     color: black;
     transition: background .25s, color .25s;
+    display: flex;
+    flex-direction: column;
 }
 
 .topBar {
@@ -330,12 +332,13 @@ footer a {
 }
 
 #content {
-    min-height: calc(100vh - 26px);
+    /*min-height: calc(100vh - 26px);*/
+    flex-grow: 1;
 }
 
 @-moz-document url-prefix() {
     #content {
-        min-height: calc(100vh - 29px);
+        /*min-height: calc(100vh - 29px);*/
     }
 }
 
