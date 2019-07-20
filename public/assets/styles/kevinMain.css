@@ -802,7 +802,53 @@ body.login .topBarInner *:not(#navBtnHome) {
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
+    margin: 10px 5px;
 }
 .button :first-child {
     flex-grow: 1;
+}
+
+.button:not([href]), .button[href=""] {
+    cursor: not-allowed;
+    background: #222222;
+    opacity: .5;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.priceAmount {
+    display: flex;
+    width: 150px;
+    margin: 20px auto;
+    border: thin solid rgba(0,0,0,.25);
+    border-radius: 5px;
+    overflow: hidden;
+    line-height: 40px;
+}
+
+.priceAmount input {
+    flex-grow: 1;
+    border: none;
+    padding-left: 10px;
+    width: 1px;
+    border-right: thin solid rgba(0,0,0,.25);
+}
+
+.priceAmount div {
+    width: 20px;
+    text-align: center;
+}
+
+.sr-only {
+    border: 0;
+    clip: rect(0,0,0,0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }

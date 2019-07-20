@@ -4,6 +4,7 @@ donateToMe: Donating to me
 donateToMeText: Hey! It looks like you're thinking about donating to me. That's nice of you!<br>If you want your donation to go towards a specific project, feel free to write your wishes into the donation comment.
 
 donatePayPal: Donate using PayPal
+donateStripe: Donate using Stripe (Credit Card)
 
 donationThankYouTitle: Thanks for donating!
 donationThankYouText: I really appreciate you appreciating my work and showing it! Feel free to mail me at <a href="mailto:kevin@kevink.dev">kevin@kevink.dev</a> if you have anything you want to talk about!

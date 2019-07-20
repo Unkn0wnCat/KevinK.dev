@@ -4,8 +4,73 @@
     <h1>{% trans from "payments" %}donateToMe{% endtrans %}</h1>
     <p>{% trans from "payments" %}donateToMeText{% endtrans %}</p>
 
-    <a class="button donateButton" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=kevin@1in9.net&item_name=KevinK.dev&currency_code=EUR&image_url=https%3A%2F%2Fkevink.dev%2Fassets%2Fimages%2Flogo%2Froundedbglogo%402x.png&return=https%3A%2F%2Fkevink.dev%2Fpayments%2Fdonate%2Fthank-you&rm=0&cancel_return=https%3A%2F%2Fkevink.dev%2Fpayments%2Fdonate" rel="noopener"><span>{% trans from "payments" %}donatePayPal{% endtrans %}</span><i class="fas fa-fw fa-chevron-right"></i></a>
+    <div class="priceAmount">
+        <label for="priceInput" class="sr-only">Amount</label>
+        <input type="number" min="1" placeholder="10.00" step=".01" value="5" id="priceInput">
+        <div>€</div>
+    </div>
+
+    {% if app.debug %}
+        <span style="display: block; text-align: center; color: red;">DEBUG MODE - USING SANDBOXES</span>
+    {% endif %}
+
+    <a class="button donateButton" rel="noopener" id="payPalBtn"><span>{% trans from "payments" %}donatePayPal{% endtrans %}</span><i class="fas fa-fw fa-chevron-right"></i></a>
+    <a class="button donateButton" id="stripeBtn"><span>{% trans from "payments" %}donateStripe{% endtrans %}</span><i class="fas fa-fw fa-chevron-right"></i></a>
+    {#<a class="button donateButton" id="stripeBtn2"><span>{% trans from "payments" %}donateStripeSofort{% endtrans %}</span><i class="fas fa-fw fa-chevron-right"></i></a>
+    <a class="button donateButton" id="stripeBtn3"><span>{% trans from "payments" %}donateStripeGiroPay{% endtrans %}</span><i class="fas fa-fw fa-chevron-right"></i></a>#}
 {% endblock %}
 
 {% block title %}{% trans from "payments" %}donate{% endtrans %}{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        {% if app.debug %}
+            const payPal = "https://sandbox.paypal.com/cgi-bin/webscr?cmd=_donations&business=ppdev@kevink.dev&item_name=KevinK.dev&currency_code=EUR&image_url=https%3A%2F%2Fkevink.dev%2Fassets%2Fimages%2Flogo%2Froundedbglogo%402x.png&return={{ url('donationThanks')|url_encode }}&rm=0&cancel_return={{ url('donation')|url_encode }}&amount=[AMOUNT]";
+        {% else %}
+            const payPal = "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=kevin@1in9.net&item_name=KevinK.dev&currency_code=EUR&image_url=https%3A%2F%2Fkevink.dev%2Fassets%2Fimages%2Flogo%2Froundedbglogo%402x.png&return={{ url('donationThanks')|url_encode }}&rm=0&cancel_return={{ url('donation')|url_encode }}&amount=[AMOUNT]";
+        {% endif %}
+
+        const stripe = "{{ path('donationStripe', { "amount": "45", "type": "card" }) }}";
+        {#const stripe2 = "{{ path('donationStripe', { "amount": "45", "type": "sofort" }) }}";
+        const stripe3 = "{{ path('donationStripe', { "amount": "45", "type": "giropay" }) }}";#}
+
+
+    $(function () {
+        $("#priceInput").change(function () {
+            updateLinks();
+        });
+
+        updateLinks();
+    });
+
+    function updateLinks() {
+
+        let price = $("#priceInput").val();
+
+        if(price > .5) {
+
+            let payPalURL = payPal.replace("[AMOUNT]", price);
+
+
+            price = price *100;
+            price = Math.floor(price);
+
+            let stripeURL = stripe.replace("45", price);
+            {#let stripe2URL = stripe2.replace("45", price);
+            let stripe3URL = stripe3.replace("45", price);#}
+
+            $("#payPalBtn").attr("href", payPalURL);
+
+            $("#stripeBtn").attr("href", stripeURL);
+            {#$("#stripeBtn2").attr("href", stripe2URL);
+            $("#stripeBtn3").attr("href", stripe3URL);#}
+        } else {
+            $("#payPalBtn").attr("href", "");
+
+            $("#stripeBtn").attr("href", "");
+        }
+    }
+</script>
+{% endblock %}
