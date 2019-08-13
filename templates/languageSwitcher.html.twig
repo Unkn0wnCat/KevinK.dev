@@ -1,6 +1,6 @@
 
 <div class="languageModalInner">
-    <h1>Languages (<a href="#" class="modalCloseLink">&times;</a>)</h1>
+    <h2>Languages (<a href="#" class="modalCloseLink">&times;</a>)</h2>
     <h3>Current Language: {% trans %}thisLang{% endtrans %}</h3>
     <ul>
         <li><a href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "en"})) }}">English</a></li>
