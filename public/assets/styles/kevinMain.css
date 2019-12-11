@@ -48,6 +48,10 @@ body {
     border-top: 2px solid transparent;
 }
 
+.topBar a:hover {
+    border-color: rgba(255, 255, 255, .25);
+}
+
 .topBar a.active {
     border-color: white;
 }
@@ -203,10 +207,14 @@ article a {
     flex-direction: column;
     flex-grow: 1;
     width: calc(100% / 4);
-    -webkit-box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
-    box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.75);
+    box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.6);
     max-width: 300px;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.postCard:hover, .projectCard:hover {
+    transform: scale(1.05);
+    box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.8);
 }
 
 @media(max-width: 800px) {
@@ -726,6 +734,12 @@ body.login .topBarInner *:not(#navBtnHome) {
     background-size: cover;
     background-position: center;
     background-color: black;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.galleryCard:hover {
+    transform: scale(1.05);
+    box-shadow: -1px 11px 33px -10px rgba(0,0,0,0.8);
 }
 
 .galleryCardSmall {

@@ -72,13 +72,13 @@
             <div class="flexSpacer"></div>
             <a id="navBtnProjects" href="{{ path('projects') }}" {% if module|default("") == "projects" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}projects{% endtrans %}</a>
             <a id="navBtnPhotos" href="{{ path('photos') }}" {% if module|default("") == "photos" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}photos{% endtrans %}</a>
-            <div class="has-dropdown">
+            {#<div class="has-dropdown">#}
                 <a id="navBtnBlog" href="{{ path('blogHome') }}" {% if module|default("") == "blog" %}class="active spf-link"{% else %}class="spf-link"{% endif %}>{% trans from "modules" %}blog{% endtrans %}</a>
-                <div class="dropdown">
-                    <a href="{{ path("blogHome") }}" class="spf-link">Home</a>
-                    <a href="{{ path("blogCategory", {"urlName": "general"}) }}" class="spf-link">{{ "general"|trans({}, "blog") }}</a>
+            {#<div class="dropdown">
+                <a href="{{ path("blogHome") }}" class="spf-link">Home</a>
+                <a href="{{ path("blogCategory", {"urlName": "general"}) }}" class="spf-link">{{ "general"|trans({}, "blog") }}</a>
                 </div>
-            </div>
+            </div>#}
             <a href="javascript:void(0);" class="offscreenNavigationSwitch" aria-label="Open Menu"><i class="fas fa-bars"></i></a>
         </nav>
     </div>
@@ -92,7 +92,7 @@
         {% endblock %}
     </div>
 
-    <footer role="contentinfo">CC-BY 4.0 Kevin Kandlbinder, <a href="{{ path('impressum') }}" class="spf-link">{% trans from "modules" %}imprint{% endtrans %}</a> | <a href="{{ path('datenschutz') }}" class="spf-link">{% trans from "modules" %}datasec{% endtrans %}</a> | <a href="{{ path('disclaimer') }}" class="spf-link">{% trans from "modules" %}disclaimer{% endtrans %}</a> | <a href="#languageChooser">Language</a><span class="adminFooter">{# | <a href="{{ path('admin') }}" class="spf-link">Admin</a>#}</span></footer>
+<footer role="contentinfo">CC-BY 4.0 Kevin Kandlbinder, <a href="{{ path('impressum') }}" class="spf-link">{% trans from "modules" %}imprint{% endtrans %}</a> | <a href="{{ path('datenschutz') }}" class="spf-link">{% trans from "modules" %}datasec{% endtrans %}</a> | <a href="{{ path('disclaimer') }}" class="spf-link">{% trans from "modules" %}disclaimer{% endtrans %}</a> | <a href="#languageChooser">Language</a><span class="adminFooter">{# | <a href="{{ path('admin') }}" class="spf-link">Admin</a>#}</span></footer>
 
 
     <div class="languageModal" id="languageChooser">
