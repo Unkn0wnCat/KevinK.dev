@@ -111,92 +111,23 @@
     <script name="kevin-main" src="{{ asset('assets/scripts/kevinMain.js') }}"></script>
     <script name="lazyLoader" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/12.0.0/lazyload.min.js"></script>
 
-    {#
-
-    TRACKING STUFF - DISABLED
-
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js" async></script>
+    <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
     <script>
-        var _paq = _paq || [];
-
-        let consent;
-
-
-        window.addEventListener("load", function(){
-            window.cookieconsent.initialise({
-                "palette": {
-                    "popup": {
-                        "background": "#252e39"
-                    },
-                    "button": {
-                        "background": "#4257ec"
-                    }
-                },
-                "theme": "edgeless",
-                "position": "bottom-right",
-                "type": "opt-out",
-                "content": {
-                    "message": "{% trans from "trackcon" %}consentText{% endtrans %}",
-                    "allow": "{% trans from "trackcon" %}allow{% endtrans %}",
-                    "dismiss": "{% trans from "trackcon" %}hide{% endtrans %}",
-                    "deny": "{% trans from "trackcon" %}deny{% endtrans %}",
-                    "link": "{% trans from "modules" %}datasec{% endtrans %}",
-                    "href": '{{ path('datenschutz') }}'
-                },
-                "revokable": false,
-                onInitialise: function (status) {
-                    var type = this.options.type;
-                    var didConsent = this.hasConsented();
-                    if (type == 'opt-in' && didConsent) {
-                        consent = true;
-                        loadAnalyticsIfNotLoaded();
-                    }
-                    if (type == 'opt-out' && !didConsent) {
-                        consent = false;
-                    }
-                },
-
-                onStatusChange: function(status, chosenBefore) {
-                    var type = this.options.type;
-                    var didConsent = this.hasConsented();
-                    if (type == 'opt-in' && didConsent) {
-                        consent = true;
-                        loadAnalyticsIfNotLoaded();
-                    }
-                    if (type == 'opt-out' && !didConsent) {
-                        consent = false;
-                    }
-                },
-
-                onRevokeChoice: function() {
-                    var type = this.options.type;
-                    if (type == 'opt-in') {
-                        consent = false;
-                    }
-                    if (type == 'opt-out') {
-                        consent = true;
-                        loadAnalyticsIfNotLoaded();
-                    }
-                },
-            })});
+        (function(f, a, t, h, o, m){
+            a[h]=a[h]||function(){
+                (a[h].q=a[h].q||[]).push(arguments)
+            };
+            o=f.createElement('script'),
+                m=f.getElementsByTagName('script')[0];
+            o.async=1; o.src=t; o.id='fathom-script';
+            m.parentNode.insertBefore(o,m)
+        })(document, window, '//webstats.kevink.dev/tracker.js', 'fathom');
+        fathom('set', 'siteId', 'KDOJM');
+        fathom('trackPageview');
     </script>
-
-    <script>
-        let isAnalyticsLoaded = false;
-
-        function loadAnalyticsIfNotLoaded() {
-            if(!isAnalyticsLoaded) {
-                loadAnalytics();
-            }
-        }
+    <!-- / Fathom -->
 
 
-        function loadAnalytics() {
-            isAnalyticsLoaded = true;
-        }
-    </script>
-    #}
     <script name="nprogress" src="{{ asset('assets/scripts/nprogress/nprogress.js') }}" async></script>
     <link rel="stylesheet" name="nprogress" href="{{ asset('assets/styles/nprogress/nprogress.css') }}">
     <script name="spfjs" src="{{ asset('assets/scripts/spfjs/spf.js') }}"></script>
