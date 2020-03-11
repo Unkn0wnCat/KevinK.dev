@@ -514,7 +514,7 @@ footer a {
     height: 40px;
 }
 
-.amazonAlexaSection, .donationSection {
+.amazonAlexaSection, .donationSection, .hireMeSection {
     min-height: 90px;
     background: #2b313f;
     cursor: pointer;
@@ -527,7 +527,7 @@ footer a {
     height: 50px;
 }
 
-.amazonAlexaSection > div, .donationSection > div {
+.amazonAlexaSection > div, .donationSection > div, .hireMeSection > div {
     display: flex;
     height: 100%;
     padding: 20px !important;
@@ -536,12 +536,12 @@ footer a {
     color: white;
 }
 
-.amazonAlexaSection > div > span, .donationSection > div > span {
+.amazonAlexaSection > div > span, .donationSection > div > span, .hireMeSection > div > span {
     margin-left: auto;
     margin-right: auto;
 }
 
-.amazonAlexaSection > div > i, .donationSection > div > i {
+.amazonAlexaSection > div > i, .donationSection > div > i, .hireMeSection > div > i {
     line-height: 50px !important;
 }
 
