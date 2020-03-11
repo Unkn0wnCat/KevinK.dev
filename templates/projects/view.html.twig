@@ -59,7 +59,7 @@
             </div>
         </section>
     {% endif %}
-    {% if project.modules.links|default(false) %}
+    {% if project.modules.links|default(false) or project.externalURL|default(false) %}
         <section class="projectLinks">
             <div>
                 <h1>{% trans from "projects" %}links{% endtrans %}</h1>
