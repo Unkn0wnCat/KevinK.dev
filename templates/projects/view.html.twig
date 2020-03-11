@@ -64,7 +64,7 @@
             <div>
                 <h1>{% trans from "projects" %}links{% endtrans %}</h1>
                 <div class="linkList">
-                    {% for link in project.modules.links %}
+                    {% for link in project.modules.links|default([]) %}
                         {% if link.type == "github" %}
                             <a href="{{ link.url }}" target="_blank"><i class="fab fa-github"></i> {% trans from "projects" %}viewGitHub{% endtrans %}</a>
                         {% elseif link.type == "gitlab" %}
