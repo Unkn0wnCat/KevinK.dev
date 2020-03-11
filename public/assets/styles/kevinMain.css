@@ -371,7 +371,7 @@ footer a {
 }
 
 @media (max-width: 590px) {
-    .profileImage {
+    .profileImage,.profileImageDummy {
         display: none;
     }
 
