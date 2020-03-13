@@ -646,6 +646,18 @@ footer a {
     border-left: thin solid rgba(255, 255, 255, .5);
 }
 
+@media(max-width: 900px) {
+    .projectCardCTAContainer {
+        flex-direction: column;
+    }
+
+    .projectCardCTA:nth-child(2) {
+        border-left: none;
+    }
+
+
+}
+
 .projectCardCTAContainer > * {
     flex-grow: 1;
 }
