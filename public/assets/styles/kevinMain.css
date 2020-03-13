@@ -227,7 +227,7 @@ article a {
 }
 
 @media(max-width: 500px) {
-    .postCard, .newestSection {
+    .postCard, .newestSection, .projectCard {
         width: 100%;
     }
     .recentsSection .postCard:nth-child(2), .newestSection .projectCard:nth-child(2) {
