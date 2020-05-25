@@ -115,7 +115,7 @@ body {
 
 .profileImageDummy {
     z-index: 10;
-    background: #4257ec;
+    background: #e5502b;
 }
 
 :hover > .profileImageDummy {
@@ -158,7 +158,7 @@ body {
 }
 
 .contactLink > i {
-    color: #4257ec;
+    color: #e5502b;
     margin-left: -25px;
     margin-right: 5px;
 }
@@ -179,7 +179,7 @@ article h1, section > div > h1 {
 }
 
 article a {
-    color: #4257ec;
+    color: #e5502b;
     text-decoration: underline dotted currentColor;
     text-decoration-skip: none;
 }
@@ -283,7 +283,7 @@ article a {
     display: block;
     padding: 10px;
     text-align: center;
-    background: #4257ec;
+    background: #e5502b;
     color: white;
     text-decoration: none;
 }
@@ -313,7 +313,7 @@ form label {
 
 form button {
     width:100%;
-    border: thin solid #4257ec;
+    border: thin solid #e5502b;
     font: inherit;
     color: black;
     background: transparent;
@@ -325,7 +325,7 @@ form button {
 }
 
 form button:hover {
-    background: #4257ec;
+    background: #e5502b;
     color: white;
 }
 
@@ -842,7 +842,7 @@ body.login .topBarInner *:not(#navBtnHome) {
 
 .button {
     display: flex;
-    background: #4257ec;
+    background: #e5502b;
     color: white;
     text-decoration: none;
     border: none;
