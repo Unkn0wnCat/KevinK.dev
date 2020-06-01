@@ -63,7 +63,7 @@
 
                     <div class="dropdown" style="transform: translate(calc(-50% + 95px), 0);">
                         {% if is_granted('ROLE_ADMIN') %}
-                            <a href="#{#TODO: Admin Login#}">{% trans %}admin{% endtrans %}</a>
+                            <a href="{{ path('admin_home') }}">{% trans %}admin{% endtrans %}</a>
                         {% endif %}
                         <a href="{{ path('logout') }}">{% trans %}logout{% endtrans %}</a>
                     </div>

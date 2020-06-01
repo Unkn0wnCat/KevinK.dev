@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog Posts{% endblock %}
+
+{% block body %}
+    <h1>Blog Posts</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Publish Time</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>New Post</td>
+                <td></td>
+                <td><a href="{{ path('blogPostNew') }}">Create</a></td>
+            </tr>
+            {% for post in posts %}
+                <tr>
+                    <td>{{ post.publishTime|date }}</td>
+                    <td>{{ post.title|decodeLocaleArray("No translation found.") }}</td>
+                    <td>{{ post.category.languageKey|trans({}, "blog") }}</td>
+                    <td><a href="{{ path('blogViewDirect', {"post_id": post.id}) }}">View</a> <a href="{{ path('blogPostEdit', {"postID": post.id}) }}">Edit</a> </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

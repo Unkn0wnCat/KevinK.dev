@@ -191,7 +191,7 @@ article a {
     color: white;
 }
 
-.postList, .projectList {
+.postList, .projectList, .cardList {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -199,7 +199,7 @@ article a {
     margin: 15px 0;
 }
 
-.postCard, .projectCard {
+.postCard, .projectCard, .genericCard {
     background: var(--background);
     border-radius: 4px;
     overflow: hidden;
@@ -214,7 +214,7 @@ article a {
     transition: transform .25s, box-shadow .25s;
 }
 
-.postCard:hover, .projectCard:hover {
+.postCard:hover, .projectCard:hover, .genericCard:hover {
     transform: scale(1.05);
     box-shadow: -1px 11px 33px -10px rgba(127,127,127,0.4);
 }
@@ -903,6 +903,11 @@ body.login .topBarInner *:not(#navBtnHome) {
     padding: 0;
     position: absolute;
     width: 1px;
+}
+
+table {
+    width: 100%;
+    text-align: center;
 }
 
 @media (prefers-color-scheme: dark) {

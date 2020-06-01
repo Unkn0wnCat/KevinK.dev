@@ -154,6 +154,7 @@ class BlogController extends AbstractController
         if($postID == -1) {
             $post = new BlogPost();
             $post->setAuthor($this->getUser());
+            $post->setPublishTime(new \DateTime());
         } else {
             $post = $blogPostRepository->findOneBy([
                 "id" => $postID
