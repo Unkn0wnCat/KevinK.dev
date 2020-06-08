@@ -553,6 +553,32 @@ footer a {
     line-height: 50px !important;
 }
 
+.creditSection {
+    background: #060606;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.creditSection > div {
+    display: flex;
+    height: 100%;
+    padding: 15px !important;
+    line-height: 15px;
+    font-size: 1.2em;
+    color: white;
+}
+
+.creditSection > div > span {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.creditSection > div > i {
+    line-height: 15px !important;
+}
+
 .projectAbout {
     background: #060606;
     color: white;
