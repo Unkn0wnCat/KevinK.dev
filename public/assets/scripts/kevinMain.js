@@ -22,6 +22,7 @@ $(function() {
             lazyLoadInstance.update();
         }
         checkNavBarCollapse();
+        checkIsTop();
 
         if(typeof fitImages !== 'undefined' && jQuery.isFunction(fitImages)) {
             fitImages();
@@ -89,6 +90,12 @@ $(function() {
 
     checkNavBarCollapse();
 
+    $(window).scroll(function() {
+        checkIsTop();
+    });
+
+    checkIsTop();
+
 
     if(typeof fitImages !== 'undefined' && jQuery.isFunction(fitImages)) {
         fitImages();
@@ -112,6 +119,14 @@ function checkNavBarCollapse() {
 
 function isOverflown(element) {
     return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
+
+function checkIsTop() {
+    if(window.scrollY < 15) {
+        $("body").addClass("atTop");
+    } else {
+        $("body").removeClass("atTop");
+    }
 }
 
 
