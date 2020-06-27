@@ -20,7 +20,7 @@ class LocaleSubscriber implements EventSubscriberInterface
         $request = $event->getRequest();
 
         if ($locale = $request->attributes->get('_locale')) {
-            $response->headers->setCookie(new Cookie("lang", $locale, strtotime('now + 1 month')));
+            $response->headers->setCookie(new Cookie("lang", $locale, strtotime('now + 1 month'), "/", null, false, true, false, "Lax"));
         }
     }
 
