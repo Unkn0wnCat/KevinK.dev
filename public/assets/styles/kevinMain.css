@@ -1,8 +1,10 @@
 :root {
     --body-width: 900px;
     --accent-color: #e5502b;
-    --background: white;
-    --text-color: black;
+    /*--background: white;
+    --text-color: black;*/
+    --background: #0d0d0d;
+    --text-color: white;
 }
 
 * {
@@ -944,11 +946,4 @@ body.login .topBarInner *:not(#navBtnHome) {
 table {
     width: 100%;
     text-align: center;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0d0d0d;
-        --text-color: white;
-    }
 }
