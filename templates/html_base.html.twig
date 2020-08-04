@@ -39,21 +39,10 @@
 
     {% endblock %}
 
-    {#<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-KNGX3QF');
-    </script>#}
-
     <link rel="alternate" hreflang="en" href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "en"})) }}"/>
     <link rel="alternate" hreflang="de" href="{{ path(app.request.attributes.get('_route')|default("index"), app.request.attributes.get('_route_params')|default({})|merge({"_locale": "de"})) }}"/>
 </head>
 <body id="body" class="{% block bodyClasses %}{% endblock %}">
-    {#<!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNGX3QF"
-                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->#}
     <div class="topBar">
         <nav class="topBarInner" role="navigation" aria-label="{% trans %}ariaMainNavigation{% endtrans %}">
             <a id="navBtnHome" href="{{ path('index') }}" class="logo{% if module|default("") == "home" %} active{% endif %} spf-link">KevinK.dev</a>
@@ -99,17 +88,17 @@
         {% include "languageSwitcher.html.twig" %}
     </div>
 
-    <link name="google-fonts" rel="preload" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Roboto&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link name="google-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Roboto&display=swap"></noscript>
+    <link name="google-fonts" rel="preload" href="{{ asset('assets/css/fonts.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link name="google-fonts" rel="stylesheet" href="{{ asset('assets/css/fonts.css') }}"></noscript>
 
     <link name="fontawesome" rel="preload" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
     <noscript><link name="fontawesome" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous"></noscript>
 
 
 
-    <script name="jquery" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script name="jquery" src="{{ asset('vendor/jquery-3.5.1.min.js') }}"></script>
     <script name="kevin-main" src="{{ asset('assets/scripts/kevinMain.js') }}"></script>
-    <script name="lazyLoader" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/12.0.0/lazyload.min.js"></script>
+    <script name="lazyLoader" src="{{ asset('vendor/lazyload.min.js') }}"></script>
 
     {#<!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
     <script>
@@ -131,8 +120,8 @@
     <script name="nprogress" src="{{ asset('assets/scripts/nprogress/nprogress.js') }}" async></script>
     <link rel="stylesheet" name="nprogress" href="{{ asset('assets/styles/nprogress/nprogress.css') }}">
     <script name="spfjs" src="{{ asset('assets/scripts/spfjs/spf.js') }}"></script>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/hybrid.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('vendor/highlight/hybrid.min.css') }}">
+    <script src="{{ asset('vendor/highlight.min.js') }}"></script>
 
     {% block javascripts %}{% endblock %}
 </body>
