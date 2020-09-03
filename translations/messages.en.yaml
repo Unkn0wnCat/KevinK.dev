@@ -16,3 +16,9 @@ error404: This page could not be found.
 error404detail: The requested page could not be loaded. Please check the URL for misspellings or return to the homepage.
 
 ariaMainNavigation: Main navigation
+
+friendsIntro: Listed here are the friends of me and my site, go check them out if you want to see more interesting projects.
+
+noFriends: No friends found... :(
+
+moreByFriends: See more projects created by friends of mine

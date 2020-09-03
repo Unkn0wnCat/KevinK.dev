@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans from "modules" %}friends{% endtrans %}{% endblock %}
+
+{% block content %}
+    <section>
+        <article>
+            <h1>{% trans from "modules" %}friends{% endtrans %}</h1>
+            <p>{% trans from "messages" %}friendsIntro{% endtrans %}</p>
+
+            <div class="friendsList">
+                {% if friends|length == 0 %}{% trans from "messages" %}noFriends{% endtrans %}{% endif %}
+                {% for friend in friends|shuffle %}
+                    <div class="friendProfile">
+                        <div class="friendImage" style="background-image: url({{ friend.image|default("https://source.unsplash.com/DIKMzjyy3eg/612x612") }});">
+                            <span class="friendName">{{ friend.friendlyName }}</span>
+                            <span class="friendTitle">{{ friend.title|decodeLocaleArray("") }}</span>
+                        </div>
+                        
+                        <span class="friendBio">{{ friend.bio|decodeLocaleArray("") }}</span>
+                        <div class="contactLinks">
+                            {% if friend.url %}<a class="contactLink" href="{{ friend.url }}" target="_blank" rel="noopener"><i class="fas fa-globe-europe"></i> {{ friend.url }}</a>{% endif %}
+                            {% if friend.twitter %}<a class="contactLink" href="https://twitter.com/{{ friend.twitter }}" target="_blank" rel="noopener"><i class="fab fa-twitter"></i> {{ friend.twitter }}</a>{% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </article>
+    </section>
+{% endblock %}
