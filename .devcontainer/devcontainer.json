@@ -3,19 +3,14 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": { 
-			// Update VARIANT to pick a PHP version: 7, 7.4, 7.3
 			"VARIANT": "7",
 			"INSTALL_NODE": "true",
 			"NODE_VERSION": "lts/*"
 		}
 	},
-	
-	// Set *default* container specific settings.json values on container create.
 	"settings": { 
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
-
-	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"felixfbecker.php-debug",
 		"felixfbecker.php-intellisense",
@@ -24,13 +19,6 @@
 		"whatwedo.twig",
 		"formulahendry.terminal"
 	],
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8000]
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "wget https://get.symfony.com/cli/installer -O - | bash",
-
-	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
-	// "remoteUser": "vscode",
+	"forwardPorts": [8000],
+	"postCreateCommand": "wget https://get.symfony.com/cli/installer -O - | bash"
 }
