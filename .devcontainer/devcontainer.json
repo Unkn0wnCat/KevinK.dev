@@ -1,8 +1,10 @@
 {
-	"name": "PHP",
+	"name": "PHP & MariaDB",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspace",
+	
+	// Set *default* container specific settings.json values on container create.
 	"settings": { 
 		"terminal.integrated.shell.linux": "/bin/bash",
 		"sqltools.connections": [{
@@ -16,6 +18,8 @@
 			"password": "mariadb"
 		}]
 	},
+
+	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"felixfbecker.php-debug",
 		"felixfbecker.php-intellisense",
@@ -31,5 +35,7 @@
 		"apt-get install -y libpng-dev zlib1g-dev && docker-php-ext-install exif gd pdo pdo_mysql mysqli",
 		"wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony/bin/symfony /usr/local/bin/symfony",
 	]
-	//"postStartCommand": "cd /workspace/KevinK.dev && composer install && symfony console doctrine:database:create && symfony console make:migration && symfony console doctrine:migrations:migrate -n && symfony server:start -d"
+
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	// "remoteUser": "vscode"
 }
