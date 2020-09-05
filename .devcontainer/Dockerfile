@@ -27,7 +27,7 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "source /usr/local/shar
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get install -y libpng-dev zlib1g-dev && docker-php-ext-install exif gd pdo pdo_mysql mysqli \
+    && apt-get install -y libpng-dev zlib1g-dev && docker-php-ext-install exif gd pdo pdo_mysql \
     && wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
 # [Optional] Uncomment this line to install global node packages.
