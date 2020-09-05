@@ -16,7 +16,9 @@
 			"database": "mariadb",
 			"username": "root",
 			"password": "mariadb"
-		}]
+		}],
+		"php.executablePath":"/usr/local/bin/php",
+		"symfony-vscode.phpExecutablePath":"/usr/local/bin/php"
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
@@ -31,10 +33,7 @@
 		"mtxr.sqltools-driver-mysql"
 	],
 	"forwardPorts": [8000, 3306],
-	"postCreateCommand": [
-		"apt-get install -y libpng-dev zlib1g-dev && docker-php-ext-install exif gd pdo pdo_mysql mysqli",
-		"wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony/bin/symfony /usr/local/bin/symfony",
-	]
+	"postStartCommand": "cd ~/workspace/KevinK.dev && composer install && symfony console make:migration && symfony console doctrine:migrations:migrate && symfony server:start -d"
 
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "vscode"
