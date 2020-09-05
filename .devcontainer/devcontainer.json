@@ -19,7 +19,10 @@
 	"extensions": [
 		"felixfbecker.php-debug",
 		"felixfbecker.php-intellisense",
-		"mrmlnc.vscode-apache"
+		"mrmlnc.vscode-apache",
+		"TheNouillet.symfony-vscode",
+		"whatwedo.twig",
+		"formulahendry.terminal"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -30,6 +33,4 @@
 
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "vscode",
-    
-    "extensions": ["TheNouillet.symfony-vscode", "whatwedo.twig", "mblode.twig-language-2", "felixfbecker.php-intellisense", "bmewburn.vscode-intelephense-client", "formulahendry.terminal"]
 }
