@@ -19,6 +19,9 @@
         "navBtnBlog": {
             "class": "{% if module|default("") == "blog" %}active spf-link{% else %}spf-link{% endif %}"
         },
+        "navBtnSocial": {
+            "class": "{% if module|default("") == "social" %}active spf-link{% else %}spf-link{% endif %}"
+        },
         "body": {
             "class": "{% filter e("js") %}{% block bodyClasses %}{% endblock %}{% endfilter %}"
         }

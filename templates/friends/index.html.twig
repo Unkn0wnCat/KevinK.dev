@@ -6,7 +6,7 @@
     <section>
         <article>
             <h1>{% trans from "modules" %}friends{% endtrans %}</h1>
-            <p>{% trans from "messages" %}friendsIntro{% endtrans %}</p>
+            <p>{{ "friendsIntro"|trans()|raw }}</p>
 
             <div class="friendsList">
                 {% if friends|length == 0 %}{% trans from "messages" %}noFriends{% endtrans %}{% endif %}

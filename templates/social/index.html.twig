@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans from "modules" %}social{% endtrans %}{% endblock %}
+
+{% block content %}
+    <section>
+        <article>
+            <h1>{% trans from "modules" %}social{% endtrans %}</h1>
+            <p>{{ "socialIntro"|trans({"%friend_link_start%": "<a href=\""~path("friends_index")~"\" class=\"spf-link\">", "%friend_link_end%": "</a>"})|raw }}</p>
+
+            <div class="socialList">
+                {% if socials|length == 0 %}{% trans from "messages" %}noSocials{% endtrans %}{% endif %}
+                {% for link in socials %}
+                    <a class="socialCard" href="{{ link.url }}">
+                        <div class="socialImage" style="background-image: url({{ link.image|default("https://source.unsplash.com/DIKMzjyy3eg/612x612") }});">
+                            <span class="socialName">{{ link.platformName }}</span>
+                            <span class="socialUsername">{{ link.handle|default("") }}</span>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </article>
+    </section>
+{% endblock %}
