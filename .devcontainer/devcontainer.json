@@ -33,7 +33,7 @@
 		"mtxr.sqltools-driver-mysql"
 	],
 	"forwardPorts": [8000, 3306],
-	"postStartCommand": "cd ~/workspace/KevinK.dev && composer install && symfony console make:migration && symfony console doctrine:migrations:migrate && symfony server:start -d"
+	"postStartCommand": "cd ~/workspace/KevinK.dev && composer install && symfony console make:migration && symfony console doctrine:migrations:migrate -n && symfony server:start -d"
 
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "vscode"
