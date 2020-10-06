@@ -1,0 +1,17 @@
+.heroSection {
+	background: linear-gradient(to left, hsl(0deg, 100%, 50%), hsl(90deg, 100%, 50%), hsl(180deg, 100%, 50%), hsl(270deg, 100%, 50%), hsl(360deg, 100%, 50%)) !important;
+}
+
+.profileCard {
+	background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%), linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%), linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%) !important;
+	background-color: black !important;
+}
+
+.aboutSection, .recentsSection {
+	color: black !important;
+	background: white !important;
+}
+
+.creditSection, .donationSection {
+	background: linear-gradient(to left, hsl(0deg, 100%, 20%), hsl(90deg, 100%, 20%), hsl(180deg, 100%, 20%), hsl(270deg, 100%, 20%), hsl(360deg, 100%, 20%)) !important;
+}

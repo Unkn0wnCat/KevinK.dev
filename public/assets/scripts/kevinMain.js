@@ -9,6 +9,32 @@ $(function() {
         NProgress.start();
     });
 
+    let codeword = "";
+    let secret = false;
+
+    $(document).on("keydown", function(ev) {
+        if(location.pathname == "/en/" || location.pathname == "/de/" || location.pathname == "/en" || location.pathname == "/de") {
+            console.log(ev);
+            codeword += ev.originalEvent.key.toLowerCase();
+
+            if(codeword == "lgbt" || codeword == "gay" || codeword == "queer") {
+                var cssId = 'coloroverride';
+                if (!document.getElementById(cssId) && !secret)
+                {
+                    secret = true;
+                    var head  = document.getElementsByTagName('head')[0];
+                    var link  = document.createElement('link');
+                    link.id   = cssId;
+                    link.rel  = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = '/assets/styles/colorful-override.css';
+                    link.media = 'all';
+                    head.appendChild(link);
+                }
+            }
+        }
+    });
+
     $(document).on("spfrequest", function() {
         NProgress.inc();
     });
