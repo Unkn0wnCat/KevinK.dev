@@ -1,35 +1,40 @@
 {
-	"name": "PHP",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"args": { 
-			// Update VARIANT to pick a PHP version: 7, 7.4, 7.3
-			"VARIANT": "7",
-			"INSTALL_NODE": "true",
-			"NODE_VERSION": "lts/*"
-		}
-	},
+	"name": "PHP & MariaDB",
+	"dockerComposeFile": "docker-compose.yaml",
+	"service": "app",
+	"workspaceFolder": "/workspace",
 	
 	// Set *default* container specific settings.json values on container create.
 	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash"
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"sqltools.connections": [{
+			"name": "Container database",
+			"driver": "MariaDB",
+			"server": "localhost",
+			"previewLimit": 50,
+			"port": 3306,
+			"database": "mariadb",
+			"username": "root",
+			"password": "mariadb"
+		}],
+		"php.executablePath":"/usr/local/bin/php",
+		"symfony-vscode.phpExecutablePath":"/usr/local/bin/php"
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"felixfbecker.php-debug",
 		"felixfbecker.php-intellisense",
-		"mrmlnc.vscode-apache"
+		"mrmlnc.vscode-apache",
+		"TheNouillet.symfony-vscode",
+		"whatwedo.twig",
+		"formulahendry.terminal",
+		"mtxr.sqltools",
+		"mtxr.sqltools-driver-mysql"
 	],
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8000]
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "wget https://get.symfony.com/cli/installer -O - | bash",
+	"forwardPorts": [8000, 3306],
+	"postStartCommand": "cd ~/workspace/KevinK.dev && composer install && symfony console make:migration && symfony console doctrine:migrations:migrate -n && symfony server:start -d"
 
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
-	// "remoteUser": "vscode",
-    
-    "extensions": ["TheNouillet.symfony-vscode", "whatwedo.twig", "mblode.twig-language-2", "felixfbecker.php-intellisense", "bmewburn.vscode-intelephense-client", "formulahendry.terminal"]
+	// "remoteUser": "vscode"
 }
