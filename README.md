@@ -1,4 +1,6 @@
-﻿# KevinK.dev
+Dead - See https://github.com/Unkn0wnCat/KevinK.dev.js for new version, now on Gatsby.
+ 
+# KevinK.dev
 _My personal website, made with Symfony_
 
 This is the code behind my personal website at https://kevink.dev. Feel free to use it or parts of it for your own projects.
